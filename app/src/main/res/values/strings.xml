@@ -7,4 +7,6 @@
     <string name="menu_search_recipes">Search Recipes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="refrigerator_tab">refrigerator</string>
+    <string name="pantry_tab">Pantry</string>
 </resources>

@@ -9,5 +9,14 @@
         android:id="@+id/home2"
         android:name="edu.quinnipiac.ser210.finalproject.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_ingredientTabsFragment"
+            app:destination="@id/ingredientTabsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientTabsFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.IngredientTabsFragment"
+        android:label="fragment_ingredient_tabs"
+        tools:layout="@layout/fragment_ingredient_tabs" />
 </navigation>
