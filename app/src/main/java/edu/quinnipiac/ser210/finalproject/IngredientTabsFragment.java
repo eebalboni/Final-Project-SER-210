@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.finalproject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,11 @@ public class IngredientTabsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private IngredientDataSource dataSource;
+    private ArrayList<Ingredient> mRefrigeratorData;
+    private ArrayList<Ingredient> mPantryData;
+    private TabsAdapter tabsAdapter;
 
     public IngredientTabsFragment() {
         // Required empty public constructor
@@ -65,7 +74,7 @@ public class IngredientTabsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ingredient_tabs, container, false);
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        TabsAdapter tabsAdapter = new TabsAdapter(getParentFragmentManager(), 2, view.getContext());
+        tabsAdapter = new TabsAdapter(getParentFragmentManager(), 2, view.getContext());
         viewPager.setAdapter(tabsAdapter);
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
@@ -90,6 +99,33 @@ public class IngredientTabsFragment extends Fragment {
 
             }
         });
+
+        //Instantiate data source
+        dataSource = new IngredientDataSource(view.getContext());
+
         return view;
+    }
+
+    class FetchIngredients extends AsyncTask<String, Void, ArrayList<Ingredient>> {
+
+        @Override
+        protected ArrayList<Ingredient> doInBackground(String... strings) {
+            dataSource.open();
+            List<Ingredient> allIngredients = dataSource.getAllIngredients();
+            return (ArrayList<Ingredient>) allIngredients;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Ingredient> ingredients) {
+            for(int i = 0; i < ingredients.size(); i++){
+                if(ingredients.get(i).getLocation().toLowerCase() == "refrigerator" ){
+                    mRefrigeratorData.add(ingredients.get(i));
+                }else{
+                    mPantryData.add(ingredients.get(i));
+                }
+            }
+            tabsAdapter.setRefrigeratorData(mRefrigeratorData);
+            tabsAdapter.setPantryData(mPantryData);
+        }
     }
 }

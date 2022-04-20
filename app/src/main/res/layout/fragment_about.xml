@@ -26,7 +26,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/cheffHat"
+            android:src="@drawable/cheffhat"
             app:layout_constraintStart_toStartOf="@+id/inspiration"
             app:layout_constraintTop_toTopOf="parent" />
 

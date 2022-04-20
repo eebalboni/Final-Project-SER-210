@@ -3,10 +3,14 @@ package edu.quinnipiac.ser210.finalproject;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +23,11 @@ public class IngredientListFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private ArrayList<Ingredient> mIngredientData;
+    private IngredientAdapter mIngredientAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +68,27 @@ public class IngredientListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ingredient_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
+
+        mRecyclerView = view.findViewById(R.id.recyclerView);
+        linearLayoutManager = new LinearLayoutManager(view.getContext());
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        if(mIngredientData == null){
+            mIngredientData = new ArrayList<Ingredient>();
+            mIngredientData.add(new Ingredient("Loading", "Loading"));
+        }
+        mIngredientAdapter = new IngredientAdapter(mIngredientData, this.getActivity());
+        mRecyclerView.setAdapter(mIngredientAdapter);
+
+        return view;
+    }
+
+    public void setIngredientData(ArrayList<Ingredient> ingredientData) {
+        mIngredientData = ingredientData;
+    }
+
+    public void replaceIngredientData(ArrayList<Ingredient> ingredientData){
+        mIngredientData = ingredientData;
+        mIngredientAdapter.updateList(mIngredientData);
     }
 }
