@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Final Project</string>
     <string name="menu_home">Home</string>
     <string name="menu_food_items">My Food</string>
     <string name="menu_search_ingredients">Search Ingredients</string>
@@ -20,5 +19,8 @@ You also can visit recipes and view them on the view recipe page.</string>
     As college students, we wanted to make cooking easy and manageable. This app helps users cook with what they have, whcih is especially
     helpful when it comes to living at school with a limited food in our kitchens.</string>
     <string name="developers">App created by Jonathan Mason, Emily Balboni and Amber Kusma</string>
+    <string name="ingredient_name">Name</string>
+    <string name="date">Date</string>
+    <string name="nutrition">Nutrition</string>
 
 </resources>
