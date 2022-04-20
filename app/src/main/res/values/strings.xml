@@ -7,7 +7,8 @@
     <string name="menu_search_recipes">Search Recipes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="refrigerator_tab">refrigerator</string>
+    <string name="pantry_tab">Pantry</string>
     <string name="app_name">Be prePEARed</string>
     <string name="about_text">How the app works:Please use the navigation bar in order
 to access each page. To log a food item that was just bought go to the find food item
