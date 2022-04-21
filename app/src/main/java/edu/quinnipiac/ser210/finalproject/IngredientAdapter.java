@@ -73,6 +73,9 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         public void bindTo(Ingredient currentIngredient) throws ParseException {
             mNameText.setText(currentIngredient.getName());
             mExpirationDateText.setText(currentIngredient.getExpirationDate());
+
+            mNutritionText.setText(currentIngredient.getNutrition());
+
             Date expDate = new SimpleDateFormat("dd/MM/yyyy").parse(currentIngredient.getExpirationDate());
             Date todayDate = new Date();
             if(todayDate.equals(expDate)){
@@ -80,8 +83,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
                 }
 
 
-            //Nutritional Data to be added later.
-            //mNutritionText.setText(currentIngredient.getNutrition());
+         
+
         }
 
 
