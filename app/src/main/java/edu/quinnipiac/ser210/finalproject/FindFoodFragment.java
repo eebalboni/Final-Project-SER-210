@@ -21,6 +21,9 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
         NavController navController = null;
 
 
+        public FindFoodFragment(){
+        }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        view.findViewById(R.id.enterFood).setOnClickListener(this::onClick);
+        view.findViewById(R.id.enterFood).setOnClickListener(this);
     }
 
     @Override
@@ -41,7 +44,6 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
         EditText foodItem = (EditText)view.findViewById(R.id.enterFood);
         item = foodItem.getText().toString();
         bundle.putString("item",item);
-        navController.navigate(R.id.addFoodFragment);
+        navController.navigate(R.id.action_findFoodFragment_to_addFoodFragment,bundle);
     }
-
 }

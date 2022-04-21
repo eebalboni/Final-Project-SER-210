@@ -56,8 +56,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.nav_food_items){
-            navController.navigate(R.id.action_home2_to_ingredientTabsFragment);
+        switch (item.getItemId()){
+            case R.id.nav_food_items:
+                navController.navigate(R.id.action_home2_to_ingredientTabsFragment);
+                break;
+            case R.id.nav_search_ingredients:
+                navController.navigate(R.id.action_home2_to_findFoodFragment);
+                break;
         }
         return false;
     }

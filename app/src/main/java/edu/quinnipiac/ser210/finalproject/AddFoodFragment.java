@@ -37,15 +37,13 @@ public class AddFoodFragment extends Fragment {
         item = getArguments().getString("item");
     }
 
-    //link to reference code for calendar
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
-        view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickRf);
-        navController.navigate(R.id.findFoodFragment);
+        view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickPn);
+        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
 
