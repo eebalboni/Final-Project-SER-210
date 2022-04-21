@@ -15,14 +15,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.ArrayAdapter;
+
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavController navController;
     NavigationView navigationView;
     Toolbar toolbar;
+
+    private IngredientDataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        dataSource.open();
     }
 
     @Override
