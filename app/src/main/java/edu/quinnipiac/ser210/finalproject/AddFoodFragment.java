@@ -43,6 +43,8 @@ public class AddFoodFragment extends Fragment {
         navController = Navigation.findNavController(view);
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
         view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickPn);
+
+        dataSource = new IngredientDataSource(view.getContext());
 //        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
@@ -56,17 +58,17 @@ public class AddFoodFragment extends Fragment {
     }
 
     private void onClickPn(View view) {
-        EditText date = (EditText) view.findViewById(R.id.datepicker) ;
+        EditText date =  getView().findViewById(R.id.datepicker) ;
         String d = date.getText().toString();
-        callDataBase(d);
         location = "pantry";
+        callDataBase(d);
     }
 
     private void onClickRf(View view) {
-        EditText date = (EditText) view.findViewById(R.id.datepicker) ;
+        EditText date = getView().findViewById(R.id.datepicker) ;
         String d = date.getText().toString();
-        callDataBase(d);
         location = "refrigerator";
+        callDataBase(d);
     }
 
     public void callDataBase(String date){
