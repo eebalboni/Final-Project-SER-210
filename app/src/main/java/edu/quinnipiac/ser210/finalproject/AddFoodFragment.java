@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class AddFoodFragment extends Fragment {
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
         view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickPn);
 
-        dataSource = new IngredientDataSource(view.getContext());
+
 //        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
@@ -53,6 +54,8 @@ public class AddFoodFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(fragment_add_food,container,false);
+        dataSource = new IngredientDataSource(layout.getContext());
+        dataSource.open();
 
         return layout;
     }
@@ -61,6 +64,7 @@ public class AddFoodFragment extends Fragment {
         EditText date =  getView().findViewById(R.id.datepicker) ;
         String d = date.getText().toString();
         location = "pantry";
+        Log.d("Items", "Item: " + item + "Date: " + d + "location" + location);
         callDataBase(d);
     }
 
