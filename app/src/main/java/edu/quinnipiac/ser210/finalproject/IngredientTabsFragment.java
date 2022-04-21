@@ -102,6 +102,7 @@ public class IngredientTabsFragment extends Fragment {
 
         //Instantiate data source
         dataSource = new IngredientDataSource(view.getContext());
+        new FetchIngredients().execute();
 
         return view;
     }
@@ -126,6 +127,7 @@ public class IngredientTabsFragment extends Fragment {
             }
             tabsAdapter.setRefrigeratorData(mRefrigeratorData);
             tabsAdapter.setPantryData(mPantryData);
+            dataSource.close();
         }
     }
 }

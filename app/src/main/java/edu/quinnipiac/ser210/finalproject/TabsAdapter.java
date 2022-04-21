@@ -58,12 +58,16 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     }
 
     public void setRefrigeratorData(ArrayList<Ingredient> refrigeratorData){
-        mRefrigeratorData = refrigeratorData;
-        refrigeratorFragment.replaceIngredientData(mRefrigeratorData);
+        if(refrigeratorData != null){
+            mRefrigeratorData = refrigeratorData;
+            refrigeratorFragment.replaceIngredientData(mRefrigeratorData);
+        }
     }
 
     public void setPantryData(ArrayList<Ingredient> pantryData){
-        mPantryData = pantryData;
-        pantryFragment.replaceIngredientData(mPantryData);
+        if(pantryData != null){
+            mPantryData = pantryData;
+            pantryFragment.replaceIngredientData(mPantryData);
+        }
     }
 }
