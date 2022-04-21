@@ -43,7 +43,7 @@ public class AddFoodFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
-        view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickPn);
+        view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickRf);
 
 
 //        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);

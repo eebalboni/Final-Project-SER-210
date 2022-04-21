@@ -32,7 +32,7 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="228dp"
             android:onClick="pantryButton"
-            android:text="Button"
+            android:text="Pantry"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/refrigerator"
             app:layout_constraintStart_toStartOf="parent" />
