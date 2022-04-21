@@ -3,13 +3,18 @@ package edu.quinnipiac.ser210.finalproject;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder>{
     private ArrayList<Ingredient> mIngredientData;
@@ -30,7 +35,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
         Ingredient currentIngredient = mIngredientData.get(position);
 
-        holder.bindTo(currentIngredient);
+        try {
+            holder.bindTo(currentIngredient);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -60,10 +69,24 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
         }
 
-        public void bindTo(Ingredient currentIngredient) {
+        @SuppressLint("ResourceAsColor")
+        public void bindTo(Ingredient currentIngredient) throws ParseException {
             mNameText.setText(currentIngredient.getName());
             mExpirationDateText.setText(currentIngredient.getExpirationDate());
+
             mNutritionText.setText(currentIngredient.getNutrition());
+
+            Date expDate = new SimpleDateFormat("dd/MM/yyyy").parse(currentIngredient.getExpirationDate());
+            Date todayDate = new Date();
+            if(todayDate.equals(expDate)){
+                mExpirationDateText.setTextColor(R.color.red);
+                }
+
+
+         
+
         }
+
+
     }
 }
