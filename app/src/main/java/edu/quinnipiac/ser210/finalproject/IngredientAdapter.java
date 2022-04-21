@@ -78,7 +78,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
             Date expDate = new SimpleDateFormat("dd/MM/yyyy").parse(currentIngredient.getExpirationDate());
             Date todayDate = new Date();
-            if(todayDate.equals(expDate)){
+            double compare = expDate.compareTo(todayDate);
+            if(compare < 0){
                 mExpirationDateText.setTextColor(R.color.red);
             }
         }
