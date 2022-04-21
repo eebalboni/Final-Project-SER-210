@@ -40,8 +40,8 @@ public class IngredientTabsFragment extends Fragment {
 
     private IngredientDataSource dataSource;
     private ArrayList<Ingredient> mIngredientsData;
-    private ArrayList<Ingredient> mRefrigeratorData;
-    private ArrayList<Ingredient> mPantryData;
+    private ArrayList<Ingredient> mRefrigeratorData = new ArrayList<Ingredient>();
+    private ArrayList<Ingredient> mPantryData = new ArrayList<Ingredient>();
     private TabsAdapter tabsAdapter;
 
     private String urlString = "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=";
@@ -132,6 +132,7 @@ public class IngredientTabsFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<Ingredient> ingredients) {
             mIngredientsData = ingredients;
+            Log.d(LOG_TAG, mIngredientsData.size()+"");
             for(int i = 0; i < mIngredientsData.size(); i++){
                 new FetchNutrition().execute(mIngredientsData.get(i).getName());
             }
@@ -180,7 +181,7 @@ public class IngredientTabsFragment extends Fragment {
                     }
                 }
             }
-            return null;
+            return nutrition;
         }
 
         @Override
@@ -189,10 +190,15 @@ public class IngredientTabsFragment extends Fragment {
                 for(int i = 0; i < mIngredientsData.size(); i++){
                     if(ingredientName == mIngredientsData.get(i).getName()){
                         mIngredientsData.get(i).setNutrition(s);
-                        if(mIngredientsData.get(i).getLocation().toLowerCase() == "refrigerator" ){
-                            mRefrigeratorData.add(mIngredientsData.get(i));
-                        }else{
-                            mPantryData.add(mIngredientsData.get(i));
+                        switch(mIngredientsData.get(i).getLocation()){
+                            case "refrigerator":{
+                                mRefrigeratorData.add(mIngredientsData.get(i));
+                                break;
+                            }
+                            case "pantry":{
+                                mPantryData.add(mIngredientsData.get(i));
+                                break;
+                            }
                         }
                     }
                 }
