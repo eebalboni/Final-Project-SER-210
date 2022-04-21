@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 navController.navigate(R.id.action_home2_to_aboutFragment);
                 break;
         }
+        drawerLayout.closeDrawers();
         return false;
     }
 
