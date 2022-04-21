@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
 
-    private IngredientDataSource dataSource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        dataSource.close();
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        dataSource.open();
-    }
 
     @Override
     public void onBackPressed() {
@@ -79,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_search_ingredients:
                 navController.navigate(R.id.action_home2_to_findFoodFragment);
+                break;
+            case R.id.nav_about:
+                navController.navigate(R.id.action_home2_to_aboutFragment);
                 break;
         }
         return false;

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +36,16 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        view.findViewById(R.id.enterFood).setOnClickListener(this);
+        view.findViewById(R.id.submitButton).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view){
+        Log.d("Reach", "I think ketchup goes well with fries");
         Bundle bundle = new Bundle();
-        EditText foodItem = (EditText)view.findViewById(R.id.enterFood);
+        EditText foodItem = getView().findViewById(R.id.enterFood);
         item = foodItem.getText().toString();
         bundle.putString("item",item);
-        navController.navigate(R.id.action_findFoodFragment_to_addFoodFragment,bundle);
+        navController.navigate(R.id.action_findFoodFragment_to_addFoodFragment, bundle);
     }
 }

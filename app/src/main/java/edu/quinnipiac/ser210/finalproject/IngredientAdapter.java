@@ -80,11 +80,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             Date todayDate = new Date();
             if(todayDate.equals(expDate)){
                 mExpirationDateText.setTextColor(R.color.red);
-                }
-
-
-         
-
+            }
         }
 
 
