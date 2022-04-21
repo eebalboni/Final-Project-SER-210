@@ -6,12 +6,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +39,15 @@ public class IngredientTabsFragment extends Fragment {
     private String mParam2;
 
     private IngredientDataSource dataSource;
+    private ArrayList<Ingredient> mIngredientsData;
     private ArrayList<Ingredient> mRefrigeratorData;
     private ArrayList<Ingredient> mPantryData;
     private TabsAdapter tabsAdapter;
+
+    private String urlString = "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=";
+    private String LOG_TAG = this.getClass().getSimpleName();
+
+    private IngredientHandler ingredientHandler = new IngredientHandler();
 
     public IngredientTabsFragment() {
         // Required empty public constructor
@@ -118,16 +131,95 @@ public class IngredientTabsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(ArrayList<Ingredient> ingredients) {
-            for(int i = 0; i < ingredients.size(); i++){
-                if(ingredients.get(i).getLocation().toLowerCase() == "refrigerator" ){
-                    mRefrigeratorData.add(ingredients.get(i));
-                }else{
-                    mPantryData.add(ingredients.get(i));
-                }
+            mIngredientsData = ingredients;
+            for(int i = 0; i < mIngredientsData.size(); i++){
+                new FetchNutrition().execute(mIngredientsData.get(i).getName());
             }
-            tabsAdapter.setRefrigeratorData(mRefrigeratorData);
-            tabsAdapter.setPantryData(mPantryData);
             dataSource.close();
         }
+    }
+
+    class FetchNutrition extends AsyncTask<String, Void, String>{
+
+        String ingredientName;
+        @Override
+        protected String doInBackground(String... strings) {
+            ingredientName = strings[0];
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String nutrition = null;
+            String query = strings[0].replaceAll("\\s", "%20");
+            try{
+                URL url= new URL(urlString+ query);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setRequestProperty("x-rapidapi-key", "61d3d3d5e3mshab3a9610c39fe9ap1d574djsn973568c7e356");
+                urlConnection.connect();
+
+                InputStream in = urlConnection.getInputStream();
+                if(in == null)
+                    return null;
+
+                reader = new BufferedReader(new InputStreamReader(in));
+                nutrition = getNutritionFromBuffer(reader);
+
+
+            }catch(Exception e){
+                Log.e(LOG_TAG, "Error" + e.getMessage());
+                return null;
+            }finally{
+                if (urlConnection != null){
+                    urlConnection.disconnect();
+                }
+                if (reader != null){
+                    try{
+                        reader.close();
+                    }catch (IOException e){
+                        Log.e(LOG_TAG,"Error" + e.getMessage());
+                        return null;
+                    }
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if(mIngredientsData != null){
+                for(int i = 0; i < mIngredientsData.size(); i++){
+                    if(ingredientName == mIngredientsData.get(i).getName()){
+                        mIngredientsData.get(i).setNutrition(s);
+                        if(mIngredientsData.get(i).getLocation().toLowerCase() == "refrigerator" ){
+                            mRefrigeratorData.add(mIngredientsData.get(i));
+                        }else{
+                            mPantryData.add(mIngredientsData.get(i));
+                        }
+                    }
+                }
+                tabsAdapter.setRefrigeratorData(mRefrigeratorData);
+                tabsAdapter.setPantryData(mPantryData);
+            }
+        }
+    }
+
+    private String getNutritionFromBuffer(BufferedReader bufferedReader){
+        StringBuffer buffer = new StringBuffer();
+        String line;
+
+        if (bufferedReader != null) {
+            try {
+                while ((line = bufferedReader.readLine()) != null) {
+                    buffer.append(line + '\n');
+                }
+                bufferedReader.close();
+                return ingredientHandler.getNutrition(buffer.toString());
+            } catch (Exception e) {
+                Log.e("MainActivity", "Error" + e.getMessage());
+                return null;
+            } finally {
+
+            }
+        }
+        return null;
     }
 }

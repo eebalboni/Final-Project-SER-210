@@ -6,6 +6,7 @@ public class Ingredient {
     private String name;
     private String expirationDate;
     private String location;
+    private String nutrition;
     private long id;
 
     public Ingredient(String name, String expirationDate){
@@ -32,6 +33,10 @@ public class Ingredient {
         return id;
     }
 
+    public String getNutrition(){
+        return nutrition;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -46,5 +51,9 @@ public class Ingredient {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setNutrition(String nutrition){
+        this.nutrition = nutrition;
     }
 }

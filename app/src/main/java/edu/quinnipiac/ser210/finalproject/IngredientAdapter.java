@@ -63,8 +63,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         public void bindTo(Ingredient currentIngredient) {
             mNameText.setText(currentIngredient.getName());
             mExpirationDateText.setText(currentIngredient.getExpirationDate());
-            //Nutritional Data to be added later.
-            //mNutritionText.setText(currentIngredient.getNutrition());
+            mNutritionText.setText(currentIngredient.getNutrition());
         }
     }
 }
