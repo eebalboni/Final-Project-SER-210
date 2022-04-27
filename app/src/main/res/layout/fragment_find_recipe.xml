@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/submitButton"
+            android:id="@+id/submitRButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="228dp"
@@ -19,43 +19,43 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enterFood" />
+            app:layout_constraintTop_toBottomOf="@+id/enterRecipe" />
 
         <TextView
-            android:id="@+id/food"
+            android:id="@+id/recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="99dp"
             android:layout_marginBottom="17dp"
-            android:text="ENTER FOOD ITEM"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            android:text="ENTER RECIPE BELOW"
+            app:layout_constraintBottom_toTopOf="@+id/chefPic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/chefPic"
             android:layout_width="215dp"
             android:layout_height="0dp"
             android:layout_marginBottom="39dp"
-            android:src="@drawable/foodtray"
-            app:layout_constraintBottom_toTopOf="@+id/enterFood"
+            android:src="@drawable/cheff"
+            app:layout_constraintBottom_toTopOf="@+id/enterRecipe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food" />
+            app:layout_constraintTop_toBottomOf="@+id/recipe" />
 
         <EditText
-            android:id="@+id/enterFood"
+            android:id="@+id/enterRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="17dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Food Item"
-            app:layout_constraintBottom_toTopOf="@+id/submitButton"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            android:text="Search Recipe"
+            app:layout_constraintBottom_toTopOf="@+id/submitRButton"
+            app:layout_constraintEnd_toEndOf="@+id/chefPic"
+            app:layout_constraintTop_toBottomOf="@+id/chefPic" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

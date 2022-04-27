@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_home2_to_findFoodFragment"
             app:destination="@id/findFoodFragment" />
+        <action
+            android:id="@+id/action_home2_to_findRecipeFragment"
+            app:destination="@id/findRecipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/ingredientTabsFragment"
@@ -48,4 +51,8 @@
             android:id="@+id/action_addFoodFragment_to_findFoodFragment"
             app:destination="@id/findFoodFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/findRecipeFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.FindRecipeFragment"
+        android:label="FindRecipeFragment" />
 </navigation>
