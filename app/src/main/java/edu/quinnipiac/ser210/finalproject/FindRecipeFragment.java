@@ -21,7 +21,6 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +47,6 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         EditText recipeName = getView().findViewById(R.id.enterRecipe);
         recipe = recipeName.getText().toString();
         bundle.putString("recipe",recipe);
-        //nav line to switch to recipe list screen
+        navController.navigate(R.id.action_findRecipeFragment_to_recipeListFragment);
     }
 }
