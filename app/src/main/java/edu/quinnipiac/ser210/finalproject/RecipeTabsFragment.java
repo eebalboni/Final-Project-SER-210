@@ -160,28 +160,6 @@ public class RecipeTabsFragment extends Fragment {
             return recipe;
         }
 
-//        @Override
-//        protected void onPostExecute(String s) {
-//            if(mIngredientsData != null){
-//                for(int i = 0; i < mIngredientsData.size(); i++){
-//                    if(ingredientName == mIngredientsData.get(i).getName()){
-//                        mIngredientsData.get(i).setNutrition(s);
-//                        switch(mIngredientsData.get(i).getLocation()){
-//                            case "refrigerator":{
-//                                mRefrigeratorData.add(mIngredientsData.get(i));
-//                                break;
-//                            }
-//                            case "pantry":{
-//                                mPantryData.add(mIngredientsData.get(i));
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//                tabsAdapter.setRefrigeratorData(mRefrigeratorData);
-//                tabsAdapter.setPantryData(mPantryData);
-//            }
-//        }
     }
 
     private String getRecipeFromBuffer(BufferedReader bufferedReader){

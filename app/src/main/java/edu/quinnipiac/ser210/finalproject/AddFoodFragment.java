@@ -23,14 +23,16 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class AddFoodFragment extends Fragment {
+public class AddFoodFragment extends Fragment  {
     String item,dateTwo;
     String location;
     NavController navController;
     IngredientDataSource dataSource;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class AddFoodFragment extends Fragment {
     private void onClickPn(View view) {
         EditText date =  getView().findViewById(R.id.datepicker) ;
         String d = date.getText().toString();
+
         location = "pantry";
         Log.d("Items", "Item: " + item + "Date: " + d + "location" + location);
         callDataBase(d);
