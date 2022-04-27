@@ -28,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.sql.DataSource;
+
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder>{
     private ArrayList<Ingredient> mIngredientData;
     private Context mContext;
@@ -69,6 +71,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     public IngredientAdapter(ArrayList<Ingredient> ingredients, Context context){
         mIngredientData = ingredients;
         mContext = context;
+        dataSource = new IngredientDataSource(context);
     }
 
     @NonNull
@@ -79,24 +82,25 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
+                dataSource.open();
+                Ingredient currentIngredient = mIngredientData.get(position);
                 CheckBox ch = holder.cardView.findViewById(R.id.check);
                 ch.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        dataSource.deleteIngredient(currentIngredient);
                         mIngredientData.remove(holder.getAdapterPosition());
                         notifyDataSetChanged();
                         notifyItemRemoved(holder.getAdapterPosition());
-
                     }
                 });
 
-
-        Ingredient currentIngredient = mIngredientData.get(position);
         try {
             holder.bindTo(currentIngredient);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        dataSource.close();
     }
 
     @Override

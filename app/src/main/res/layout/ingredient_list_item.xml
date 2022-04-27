@@ -43,5 +43,12 @@
             android:layout_toRightOf="@+id/ingName"
             android:layout_marginLeft="250dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_below="@id/check"
+            android:layout_marginLeft="300dp"/>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
