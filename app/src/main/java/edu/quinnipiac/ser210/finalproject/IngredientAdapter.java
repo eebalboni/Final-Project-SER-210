@@ -18,11 +18,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -41,7 +39,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         private TextView mExpirationDateText;
         private TextView mNutritionText;
         private CardView cardView;
-        private ImageButton bn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -49,9 +46,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             mNameText = cardView.findViewById(R.id.ingName);
             mExpirationDateText = cardView.findViewById(R.id.date);
             mNutritionText = cardView.findViewById(R.id.nutrition);
-
-            //something is wrong
-            bn = cardView.findViewById(R.id.delete_button);
         }
 
 
@@ -85,29 +79,24 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
-                IngredientDataSource i = new IngredientDataSource(mContext);
-                i.open();
-                CardView cardView = holder.cardView;
-                ImageButton bt = (ImageButton) cardView.findViewById(R.id.delete_button);
-                bt.setOnClickListener(new View.OnClickListener() {
+                CheckBox ch = holder.cardView.findViewById(R.id.check);
+                ch.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //removing from list
                         mIngredientData.remove(holder.getAdapterPosition());
-                        //removing from database
-                        i.deleteIngredient(mIngredientData.get(position));
-                        //updating
                         notifyDataSetChanged();
+                        notifyItemRemoved(holder.getAdapterPosition());
+
                     }
                 });
+
+
         Ingredient currentIngredient = mIngredientData.get(position);
         try {
             holder.bindTo(currentIngredient);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        i.close();
     }
 
     @Override
