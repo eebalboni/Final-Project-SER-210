@@ -54,5 +54,13 @@
     <fragment
         android:id="@+id/findRecipeFragment"
         android:name="edu.quinnipiac.ser210.finalproject.FindRecipeFragment"
-        android:label="FindRecipeFragment" />
+        android:label="FindRecipeFragment" >
+        <action
+            android:id="@+id/action_findRecipeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.RecipeListFragment"
+        android:label="RecipeListFragment" />
 </navigation>

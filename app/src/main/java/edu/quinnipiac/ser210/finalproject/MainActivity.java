@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_about:
                 navController.navigate(R.id.action_home2_to_aboutFragment);
                 break;
+            case R.id.nav_search_recipes:
+                navController.navigate(R.id.action_home2_to_findRecipeFragment);
         }
         drawerLayout.closeDrawers();
         return false;
