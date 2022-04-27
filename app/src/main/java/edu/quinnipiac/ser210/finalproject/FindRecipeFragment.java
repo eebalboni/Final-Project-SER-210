@@ -14,6 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class FindRecipeFragment extends Fragment implements View.OnClickListener{
     private String recipe;
     NavController navController = null;
@@ -41,12 +45,13 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View viw){
-        Log.d("Reach","I think ketchup goes well with fries");
-        Bundle bundle = new Bundle();
+    public void onClick(View view) {
+        Log.d("Reach", "I think ketchup goes well with fries");
+        Bundle bundle= new Bundle();
         EditText recipeName = getView().findViewById(R.id.enterRecipe);
         recipe = recipeName.getText().toString();
         bundle.putString("recipe",recipe);
         navController.navigate(R.id.action_findRecipeFragment_to_recipeListFragment);
     }
-}
+    
+    }

@@ -1,14 +1,17 @@
 package edu.quinnipiac.ser210.finalproject;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
@@ -18,18 +21,47 @@ public class RecipeListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Recipe> mRecipeData;
-    private RecipeAdapter mAdapter;
+    private RecipeAdapter mRecipeAdapter;
 
-    public RecipeListFragment() {
-        // Required empty public constructor
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+
+
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public static RecipeListFragment newInstance(String param1, String param2) {
+        RecipeListFragment fragment = new RecipeListFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
         //not sure if this line will be any help
        // String recipe = savedInstanceState.getString("recipe");
+        //favorites
+//        cursor = readDatabase();
+//        SimpleCursorAdapter listAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, columns,to, 0);
+//        setListAdapter(listAdapter);
     }
+
+//    private Cursor readDatabase(){
+//        //RecipeSQLiteHelper recipeHelper = new RecipeSQLiteHelper(this, RecipeSQLiteHelper.COLUMN_RECIPE, null, RecipeSQLiteHelper.DA)
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,8 +79,8 @@ public class RecipeListFragment extends Fragment {
             dataSource.close();
         }
 
-        mAdapter = new RecipeAdapter(mRecipeData, this.getActivity());
-        mRecyclerView.setAdapter(mAdapter);
+        mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity());
+        mRecyclerView.setAdapter(mRecipeAdapter);
         return view;
     }
 
@@ -58,6 +90,11 @@ public class RecipeListFragment extends Fragment {
 
     public void replaceRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;
-        mAdapter.updateList(mRecipeData);
+        mRecipeAdapter.updateList(mRecipeData);
     }
 }
+
+
+
+
+
