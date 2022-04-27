@@ -1,14 +1,30 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -28,24 +44,16 @@ public class IngredientListFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Ingredient> mIngredientData;
     private IngredientAdapter mIngredientAdapter;
-
+    private IngredientDataSource ingredientDataSource;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public IngredientListFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment IngredientListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static IngredientListFragment newInstance(String param1, String param2) {
         IngredientListFragment fragment = new IngredientListFragment();
         Bundle args = new Bundle();
@@ -68,9 +76,15 @@ public class IngredientListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
+        //code for button
+       // ingredientDataSource = new IngredientDataSource(view.getContext());
+        //ingredientDataSource.open();
+
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         if(mIngredientData == null){
@@ -80,8 +94,10 @@ public class IngredientListFragment extends Fragment {
         mIngredientAdapter = new IngredientAdapter(mIngredientData, this.getActivity());
         mRecyclerView.setAdapter(mIngredientAdapter);
 
+       // ingredientDataSource.close();
         return view;
     }
+
 
     public void setIngredientData(ArrayList<Ingredient> ingredientData) {
         mIngredientData = ingredientData;
@@ -91,4 +107,5 @@ public class IngredientListFragment extends Fragment {
         mIngredientData = ingredientData;
         mIngredientAdapter.updateList(mIngredientData);
     }
+
 }

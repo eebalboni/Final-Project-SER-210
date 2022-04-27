@@ -1,3 +1,13 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
+
+/*
+Find recipe fragment lets the user search for a recipe.
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.os.Bundle;
@@ -33,6 +43,7 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         return inflater.inflate(R.layout.fragment_find_recipe, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -40,6 +51,10 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.submitRButton).setOnClickListener(this);
     }
 
+    /*
+    Setting on click listener for the submit button, saving the recipe name
+    as a string in the bundle. nav graph moves to next fragment to display
+     */
     @Override
     public void onClick(View viw){
         Log.d("Reach","I think ketchup goes well with fries");

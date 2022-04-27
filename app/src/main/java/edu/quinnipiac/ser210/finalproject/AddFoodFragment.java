@@ -1,3 +1,14 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
+
+/*
+The AddFoodFragment lets the user add a food item to their pantry or refrigerator
+This stores the information into a database
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import static edu.quinnipiac.ser210.finalproject.R.layout.fragment_add_food;

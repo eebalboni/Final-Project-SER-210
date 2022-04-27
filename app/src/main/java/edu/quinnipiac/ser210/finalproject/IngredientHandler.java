@@ -1,3 +1,9 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.util.Log;
@@ -18,6 +24,7 @@ public class IngredientHandler {
         double carbohydrates = nutritionJSONOBJ.getDouble("carbohydrates_total_g");
         double fat = nutritionJSONOBJ.getDouble("fat_total_g");
         double sugar = nutritionJSONOBJ.getDouble("sugar_g");
+
 
         String result = "Calories: " + calories +"\nProtein: " + protein + "\nCarbohydrates: " + carbohydrates + "\nFat: " + fat + "\nSugar: " + sugar;
         return result;
