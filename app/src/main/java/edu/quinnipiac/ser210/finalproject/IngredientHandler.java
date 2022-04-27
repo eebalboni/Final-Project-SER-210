@@ -25,6 +25,7 @@ public class IngredientHandler {
         double fat = nutritionJSONOBJ.getDouble("fat_total_g");
         double sugar = nutritionJSONOBJ.getDouble("sugar_g");
 
+
         String result = "Calories: " + calories +"\nProtein: " + protein + "\nCarbohydrates: " + carbohydrates + "\nFat: " + fat + "\nSugar: " + sugar;
         return result;
     }

@@ -34,5 +34,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/date"
             android:text="@string/nutrition" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_baseline_delete_24"
+            android:layout_toRightOf="@+id/nutrition"
+            android:layout_marginLeft="250dp"/>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
