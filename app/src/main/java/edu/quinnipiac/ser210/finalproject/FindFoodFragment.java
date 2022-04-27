@@ -21,7 +21,6 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
         private static String item;
         NavController navController = null;
 
-
         public FindFoodFragment(){
         }
 
