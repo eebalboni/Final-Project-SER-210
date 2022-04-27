@@ -53,5 +53,5 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         bundle.putString("recipe",recipe);
         navController.navigate(R.id.action_findRecipeFragment_to_recipeListFragment);
     }
-    
+
     }
