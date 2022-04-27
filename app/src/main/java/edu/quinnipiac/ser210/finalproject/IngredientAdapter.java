@@ -100,7 +100,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dataSource.close();
     }
 
     @Override
