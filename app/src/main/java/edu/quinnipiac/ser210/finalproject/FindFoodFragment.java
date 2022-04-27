@@ -1,3 +1,15 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
+
+/*
+The find food fragment lets the user search for a food item. When they press enter
+the navigation controller takes the user to the next screen
+We store the food item being searched for in the bundle
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.content.Context;
@@ -20,7 +32,6 @@ import android.widget.EditText;
 public class FindFoodFragment extends Fragment implements View.OnClickListener{
         private static String item;
         NavController navController = null;
-
         public FindFoodFragment(){
         }
 
@@ -38,6 +49,8 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
         view.findViewById(R.id.submitButton).setOnClickListener(this);
     }
 
+    //onClickListener for the submit button
+    //when its clicked navigation graph takes us to next screen
     @Override
     public void onClick(View view){
         Log.d("Reach", "I think ketchup goes well with fries");

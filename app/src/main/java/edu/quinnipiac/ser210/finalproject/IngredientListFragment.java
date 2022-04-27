@@ -1,3 +1,9 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.os.Bundle;
@@ -37,15 +43,7 @@ public class IngredientListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment IngredientListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static IngredientListFragment newInstance(String param1, String param2) {
         IngredientListFragment fragment = new IngredientListFragment();
         Bundle args = new Bundle();
@@ -71,6 +69,7 @@ public class IngredientListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         if(mIngredientData == null){
