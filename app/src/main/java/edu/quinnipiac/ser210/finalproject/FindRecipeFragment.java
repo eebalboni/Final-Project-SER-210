@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindRecipeFragment extends Fragment {
+public class FindRecipeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String recipe;
@@ -62,10 +62,10 @@ public class FindRecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_find_recipe, container, false);
 
-        dataSource = new RecipeDataSource(view.getContext());
-        new FindRecipeFragment.FetchRecipes().execute();
+//        dataSource = new RecipeDataSource(view.getContext());
+//        new FindRecipeFragment.FetchRecipes().execute();
 
         return view;
     }
@@ -74,7 +74,7 @@ public class FindRecipeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        view.findViewById(R.id.submitRButton).setOnClickListener((View.OnClickListener) this);
+        view.findViewById(R.id.submitRButton).setOnClickListener(this);
     }
 
 
