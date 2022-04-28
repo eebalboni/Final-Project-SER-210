@@ -97,8 +97,11 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         Log.d("Reach","I think ketchup goes well with fries");
         Bundle bundle = new Bundle();
         EditText recipeName = getView().findViewById(R.id.enterRecipe);
+        //this line needs to change
         new FetchRecipes().execute(recipeName.getText().toString());
     }
+
+
     public static FindRecipeFragment newInstance(String param1, String param2) {
         FindRecipeFragment fragment = new FindRecipeFragment();
         Bundle args = new Bundle();

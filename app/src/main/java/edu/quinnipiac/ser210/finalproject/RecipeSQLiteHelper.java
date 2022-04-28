@@ -24,6 +24,8 @@ public class RecipeSQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database creation sql statement
+    //code for favorites in database
+    //+COLUMN_FAVORITE + "boolean not null "
     private static final String DATABASE_CREATE = "create table "
             + TABLE_RECIPE + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_RECIPE
