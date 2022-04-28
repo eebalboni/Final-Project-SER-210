@@ -16,6 +16,7 @@ import static edu.quinnipiac.ser210.finalproject.R.layout.fragment_find_food;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -43,12 +44,14 @@ public class AddFoodFragment extends Fragment  {
     String location;
     NavController navController;
     IngredientDataSource dataSource;
+    Button pantryButton;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         item = getArguments().getString("item");
+
     }
 
     @Override
@@ -57,6 +60,7 @@ public class AddFoodFragment extends Fragment  {
         navController = Navigation.findNavController(view);
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
         view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickRf);
+
 
 
 //        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
@@ -80,6 +84,8 @@ public class AddFoodFragment extends Fragment  {
         location = "pantry";
         Log.d("Items", "Item: " + item + "Date: " + d + "location" + location);
         callDataBase(d);
+        Toast toast = Toast.makeText(getContext(), "Item added to your pantry", Toast.LENGTH_LONG);
+        toast.show();
     }
 
     private void onClickRf(View view) {
@@ -87,6 +93,13 @@ public class AddFoodFragment extends Fragment  {
         String d = date.getText().toString();
         location = "refrigerator";
         callDataBase(d);
+
+
+
+        Toast toast = Toast.makeText(getContext(), "Item added to your refrigerator", Toast.LENGTH_LONG);
+        toast.show();
+
+
     }
 
     public void callDataBase(String date){

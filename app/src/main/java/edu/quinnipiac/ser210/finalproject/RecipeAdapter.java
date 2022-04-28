@@ -20,17 +20,26 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder>{
     private ArrayList<Recipe> mRecipeData;
+    private RecipeListFragment recipeListFrag= new RecipeListFragment();
     private Context mContext;
 
     public RecipeAdapter(ArrayList<Recipe> recipeData, Context context){
         mRecipeData = recipeData;
         mContext = context;
+        recipeListFrag.setRecipeData(mRecipeData);
     }
 
     @NonNull
     @Override
     public RecipeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, parent, false));
+    }
+    public void setRecipeData(ArrayList<Recipe>recipeData){
+        if(recipeData!=null){
+            mRecipeData = recipeData;
+            recipeListFrag.replaceRecipeData(mRecipeData);
+        }
+
     }
 
     @Override
@@ -62,4 +71,5 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             mNameText.setText(currentRecipe.getName());
         }
     }
+
 }

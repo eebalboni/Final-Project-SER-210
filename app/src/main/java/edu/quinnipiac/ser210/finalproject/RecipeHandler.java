@@ -24,6 +24,7 @@ public class RecipeHandler {
             String instructions = curObject.getString("instructions");
 
             result.add(new Recipe(name, ingredients, servings, instructions));
+            //String result = "Recipe " + name +"\nIngredients " + ingredients + "\nServings: " + servings + "\nInstructions " + instructions ;
         }
 
         return result;
