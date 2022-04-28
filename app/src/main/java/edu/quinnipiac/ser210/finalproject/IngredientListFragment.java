@@ -84,8 +84,11 @@ public class IngredientListFragment extends Fragment {
 
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
+
         mRecyclerView.setHasFixedSize(true);
+
         linearLayoutManager = new LinearLayoutManager(view.getContext());
+
         mRecyclerView.setLayoutManager(linearLayoutManager);
         if(mIngredientData == null){
             mIngredientData = new ArrayList<Ingredient>();

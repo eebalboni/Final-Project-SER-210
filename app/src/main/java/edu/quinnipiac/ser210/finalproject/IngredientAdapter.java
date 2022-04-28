@@ -80,6 +80,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.ingredient_list_item, parent, false));
     }
 
+    //used stack overflow as a reference:
+    // https://stackoverflow.com/questions/52404324/how-to-delete-or-remove-cardview-from-recyclerview-android-studio
     @Override
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
                 dataSource.open();
