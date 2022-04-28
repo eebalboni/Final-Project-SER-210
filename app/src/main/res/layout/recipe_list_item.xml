@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardElevation="8dp"
     layout_margin="8dp">
 
     <RelativeLayout
@@ -13,6 +15,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text= "@string/recipe_name" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:id="@+id/check"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:layout_toRightOf="@+id/recipeName"
+            android:layout_marginLeft="250dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_below="@id/check"
+            android:layout_marginLeft="300dp"/>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
