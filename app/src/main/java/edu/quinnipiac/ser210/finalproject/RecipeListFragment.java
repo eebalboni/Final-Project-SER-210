@@ -50,6 +50,7 @@ public class RecipeListFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            mRecipeData = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
         }
         //not sure if this line will be any help
        // String recipe = savedInstanceState.getString("recipe");

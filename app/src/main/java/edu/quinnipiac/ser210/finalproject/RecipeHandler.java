@@ -6,20 +6,26 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class RecipeHandler {
 
-    public static String getRecipe(String recipeJsonStr) throws JSONException{
-        JSONObject listJSONObj = new JSONObject(recipeJsonStr);
-        JSONArray recipeJSONArray = listJSONObj.getJSONArray("items");
-        JSONObject recipeJSONOBJ = recipeJSONArray.getJSONObject(0);
+    public static ArrayList<Recipe> getRecipe(String recipeJsonStr) throws JSONException{
+        JSONArray listJSONArray = new JSONArray(recipeJsonStr);
+        ArrayList<Recipe> result = new ArrayList<Recipe>();
 
-        String name = recipeJSONOBJ.getString("title");
-        String ingredients = recipeJSONOBJ.getString("ingredients");
-        String servings = recipeJSONOBJ.getString("servings");
-        String instructions = recipeJSONOBJ.getString("instructions");
+        for(int i = 0; i < listJSONArray.length(); i++){
+            JSONObject curObject = listJSONArray.getJSONObject(i);
 
+            String name = curObject.getString("title");
+            String ingredients = curObject.getString("ingredients");
+            String servings = curObject.getString("servings");
+            String instructions = curObject.getString("instructions");
 
-        String result = "Recipe " + name +"\nIngredients " + ingredients + "\nServings: " + servings + "\nInstructions " + instructions ;
+            result.add(new Recipe(name, ingredients, servings, instructions));
+        }
+
         return result;
     }
 

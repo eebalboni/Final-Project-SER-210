@@ -1,6 +1,10 @@
 package edu.quinnipiac.ser210.finalproject;
 
-public class Recipe {
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Recipe implements Serializable {
     private String name;
     //I don't think we should have an array of type ingredients as parsing the string from the API doesn't seem to be the best idea;
     private String ingredients;

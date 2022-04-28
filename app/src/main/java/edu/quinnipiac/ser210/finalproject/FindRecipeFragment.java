@@ -40,7 +40,7 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
 
     private TabsAdapter tabsAdapter;
 
-    private String urlString = "https://rapidapi.com/apininjas/api/recipe-by-api-ninjas/ ";
+    private String urlString = "https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=";
     private String LOG_TAG = this.getClass().getSimpleName();
 
     private RecipeHandler recipeHandler = new RecipeHandler();
@@ -64,8 +64,7 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_recipe, container, false);
 
-//        dataSource = new RecipeDataSource(view.getContext());
-//        new FindRecipeFragment.FetchRecipes().execute();
+        dataSource = new RecipeDataSource(view.getContext());
 
         return view;
     }
@@ -80,11 +79,8 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
 
     public void onClick(View view) {
         Log.d("Reach", "I think ketchup goes well with fries");
-        Bundle bundle= new Bundle();
         EditText recipeName = getView().findViewById(R.id.enterRecipe);
-        recipe = recipeName.getText().toString();
-        bundle.putString("recipe",recipe);
-        navController.navigate(R.id.action_findRecipeFragment_to_recipeListFragment);
+        new FetchRecipes().execute(recipeName.getText().toString());
     }
     public static FindRecipeFragment newInstance(String param1, String param2) {
         FindRecipeFragment fragment = new FindRecipeFragment();
@@ -94,42 +90,42 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         fragment.setArguments(args);
         return fragment;
     }
-    class FetchRecipe extends AsyncTask<String, Void, ArrayList<Recipe>> {
+//    class FetchRecipe extends AsyncTask<String, Void, ArrayList<Recipe>> {
+//
+//        @Override
+//        protected ArrayList<Recipe> doInBackground(String... strings) {
+//            dataSource.open();
+//            List<Recipe> allIngredients = dataSource.getAllRecipes();
+//            return (ArrayList<Recipe>) mRecipe;
+//        }
+//
+//
+//        @Override
+//        protected void onPostExecute(ArrayList<Recipe> recipe) {
+//            mRecipe = recipe;
+//            Log.d(LOG_TAG, mRecipe.size()+"");
+//            for(int i = 0; i < mRecipe.size(); i++){
+//                new FetchRecipe().execute(mRecipe.get(i).getName());
+//            }
+//            dataSource.close();
+//        }
+//    }
 
-        @Override
-        protected ArrayList<Recipe> doInBackground(String... strings) {
-            dataSource.open();
-            List<Recipe> allIngredients = dataSource.getAllRecipes();
-            return (ArrayList<Recipe>) mRecipe;
-        }
-
-
-        @Override
-        protected void onPostExecute(ArrayList<Recipe> recipe) {
-            mRecipe = recipe;
-            Log.d(LOG_TAG, mRecipe.size()+"");
-            for(int i = 0; i < mRecipe.size(); i++){
-                new FetchRecipe().execute(mRecipe.get(i).getName());
-            }
-            dataSource.close();
-        }
-    }
-
-    class FetchRecipes extends AsyncTask<String, Void, String>{
+    class FetchRecipes extends AsyncTask<String, Void, ArrayList<Recipe>>{
 
         String recipeName;
         @Override
-        protected String doInBackground(String... strings) {
+        protected ArrayList<Recipe> doInBackground(String... strings) {
             recipeName = strings[0];
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            String recipe = null;
+            ArrayList<Recipe> recipe = null;
             String query = strings[0].replaceAll("\\s", "%20");
             try{
                 URL url= new URL(urlString+ query);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
-                urlConnection.setRequestProperty("x-rapidapi-key", "906083b443msh7aa7c234551c004p11e");
+                urlConnection.setRequestProperty("x-rapidapi-key", "61d3d3d5e3mshab3a9610c39fe9ap1d574djsn973568c7e356");
                 urlConnection.connect();
 
                 InputStream in = urlConnection.getInputStream();
@@ -159,9 +155,16 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
             return recipe;
         }
 
+        @Override
+        protected void onPostExecute(ArrayList<Recipe> recipes) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("recipes", recipes);
+            Log.d("Reach", recipes.toString());
+            navController.navigate(R.id.action_findRecipeFragment_to_recipeListFragment, bundle);
+        }
     }
 
-    private String getRecipeFromBuffer(BufferedReader bufferedReader){
+    private ArrayList<Recipe> getRecipeFromBuffer(BufferedReader bufferedReader){
         StringBuffer buffer = new StringBuffer();
         String line;
 
