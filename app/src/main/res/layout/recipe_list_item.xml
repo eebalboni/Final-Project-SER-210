@@ -20,5 +20,23 @@
             android:layout_height="wrap_content"
             android:text= "@string/recipe_name" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:id="@+id/star"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:layout_marginLeft="300dp"
+            style="?android:attr/starStyle"
+            />
+
+        <TextView
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorite"
+            android:layout_below="@id/star"
+            android:layout_marginLeft="300dp"/>
+
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

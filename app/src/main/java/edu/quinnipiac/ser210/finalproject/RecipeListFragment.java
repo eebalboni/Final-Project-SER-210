@@ -9,15 +9,21 @@ package edu.quinnipiac.ser210.finalproject;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -73,6 +79,13 @@ public class RecipeListFragment extends Fragment {
 //        //RecipeSQLiteHelper recipeHelper = new RecipeSQLiteHelper(this, RecipeSQLiteHelper.COLUMN_RECIPE, null, RecipeSQLiteHelper.DA)
 //    }
 
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        view.findViewById(R.id.star).onCheckedChangedListener(this::onCheckList);
+//
+//    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,6 +109,11 @@ public class RecipeListFragment extends Fragment {
         mRecyclerView.setAdapter(mRecipeAdapter);
         return view;
     }
+//    private void onCheckList(View view) {
+//
+//        Toast toast = Toast.makeText(getContext(), "Added to your favorites", Toast.LENGTH_LONG);
+//        toast.show();
+//    }
 
     public void setRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;
