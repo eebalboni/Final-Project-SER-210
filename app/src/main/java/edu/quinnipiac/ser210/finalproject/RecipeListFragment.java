@@ -28,6 +28,7 @@ public class RecipeListFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Recipe> mRecipeData;
     private RecipeAdapter mRecipeAdapter;
+    private RecipeHandler mRecipeHandler = new RecipeHandler();
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -38,6 +39,8 @@ public class RecipeListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public RecipeListFragment(){}
+
 
     public static RecipeListFragment newInstance(String param1, String param2) {
         RecipeListFragment fragment = new RecipeListFragment();
@@ -76,8 +79,11 @@ public class RecipeListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
         //i stored the recipe title
+
         mRecyclerView = view.findViewById(R.id.recipeRecyclerView);
+        mRecyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(view.getContext());
+
         mRecyclerView.setLayoutManager(linearLayoutManager);
         if(mRecipeData == null){
             dataSource = new RecipeDataSource(view.getContext());
