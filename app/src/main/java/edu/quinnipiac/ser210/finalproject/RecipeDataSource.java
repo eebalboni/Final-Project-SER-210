@@ -42,6 +42,7 @@ public class RecipeDataSource {
         values.put(RecipeSQLiteHelper.COLUMN_INGREDIENTS, ingredients);
         values.put(RecipeSQLiteHelper.COLUMN_SERVINGS, servings);
         values.put(RecipeSQLiteHelper.COLUMN_INSTRUCTIONS, instructions);
+        //values.put(RecipeSQLiteHelper.COLUMN_FAVORITE, isFavorite);
 
         long insertId = database.insert(RecipeSQLiteHelper.TABLE_RECIPE, null, values);
         Cursor cursor = database.query(RecipeSQLiteHelper.TABLE_RECIPE, allColumns, RecipeSQLiteHelper.COLUMN_ID + " = " + insertId, null, null, null, null);

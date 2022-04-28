@@ -18,6 +18,7 @@ public class RecipeSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_INGREDIENTS = "ingredients";
     public static final String COLUMN_SERVINGS = "servings";
     public static final String COLUMN_INSTRUCTIONS = "instructions";
+    //public static final String COLUMN_FAVORITE = "favorite";
 
     public static final String DATABASE_NAME = "ingredients.db";
     private static final int DATABASE_VERSION = 1;
