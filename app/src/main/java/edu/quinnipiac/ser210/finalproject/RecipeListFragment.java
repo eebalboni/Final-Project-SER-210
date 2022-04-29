@@ -109,11 +109,7 @@ public class RecipeListFragment extends Fragment {
         mRecyclerView.setAdapter(mRecipeAdapter);
         return view;
     }
-//    private void onCheckList(View view) {
-//
-//        Toast toast = Toast.makeText(getContext(), "Added to your favorites", Toast.LENGTH_LONG);
-//        toast.show();
-//    }
+//   
 
     public void setRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;
