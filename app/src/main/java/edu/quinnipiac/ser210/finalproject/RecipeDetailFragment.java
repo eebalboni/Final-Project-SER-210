@@ -30,12 +30,13 @@ public class RecipeDetailFragment extends Fragment {
     private ArrayList<Recipe> mRecipeData;
     private RecipeDataSource rData;
     private String name,serving,ingredient,instruction;
-
+    private Bundle b;
     public RecipeDetailFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+         b = getArguments();
          name = getArguments().getString("name");
          serving = getArguments().getString("serving");
          ingredient = getArguments().getString("ingredient");
@@ -78,8 +79,7 @@ public class RecipeDetailFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.action_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                // arraylist
-                //intent.putExtras("Recipe name",mRecipeData)
+                intent.putExtras(b);
                 return true;
         }
         return false;
