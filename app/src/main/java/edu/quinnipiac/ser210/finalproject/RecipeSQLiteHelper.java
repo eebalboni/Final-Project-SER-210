@@ -4,6 +4,11 @@ Professor Ruby
 Be prePEARed app, meant to help users keep track of food and find recipes easily!
 By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
+
+/*
+RecipeSQLiteHelper class. Handles SQL methods used in RecipeDataSource class.
+Author: Jonathan Mason
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.content.Context;

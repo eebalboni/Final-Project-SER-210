@@ -4,6 +4,12 @@ Professor Ruby
 Be prePEARed app, meant to help users keep track of food and find recipes easily!
 By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
+
+/*
+RecipeListFragment class. Creates a recycle view fragment containing recipe data
+Authors: Jonathan Mason, (I don't remember who else worked on this so far)
+ */
+
 package edu.quinnipiac.ser210.finalproject;
 
 import android.database.Cursor;

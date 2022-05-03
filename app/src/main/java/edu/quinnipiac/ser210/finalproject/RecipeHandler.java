@@ -1,3 +1,14 @@
+/*
+SER 210 Final Project
+Professor Ruby
+Be prePEARed app, meant to help users keep track of food and find recipes easily!
+By: Jonathan Mason, Emily Balboni, and Amber Kusma
+ */
+/*
+RecipeHandler class. Converts string buffer into a JSONArray that can then be used for obtaining data from the Recipe API.
+Author: Jonathan Mason, Amber Kusma
+ */
+
 package edu.quinnipiac.ser210.finalproject;
 
 import android.util.Log;
