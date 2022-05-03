@@ -67,24 +67,9 @@ public class RecipeListFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
             mRecipeData = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
         }
-        //not sure if this line will be any help
-       // String recipe = savedInstanceState.getString("recipe");
-        //favorites
-//        cursor = readDatabase();
-//        SimpleCursorAdapter listAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, columns,to, 0);
-//        setListAdapter(listAdapter);
+
     }
 
-//    private Cursor readDatabase(){
-//        //RecipeSQLiteHelper recipeHelper = new RecipeSQLiteHelper(this, RecipeSQLiteHelper.COLUMN_RECIPE, null, RecipeSQLiteHelper.DA)
-//    }
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        view.findViewById(R.id.star).onCheckedChangedListener(this::onCheckList);
-//
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -105,15 +90,10 @@ public class RecipeListFragment extends Fragment {
             dataSource.close();
         }
 
-        mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity());
+        mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity(),savedInstanceState);
         mRecyclerView.setAdapter(mRecipeAdapter);
         return view;
     }
-//    private void onCheckList(View view) {
-//
-//        Toast toast = Toast.makeText(getContext(), "Added to your favorites", Toast.LENGTH_LONG);
-//        toast.show();
-//    }
 
     public void setRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;

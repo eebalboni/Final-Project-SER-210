@@ -12,6 +12,4 @@
         android:background="@color/mellow_blue"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"/>
-
-
 </FrameLayout>

@@ -17,16 +17,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class RecipeDetailFragment extends Fragment {
+    private static String name;
     private Toolbar mToolbar;
     private ShareActionProvider mShareActionProvider;
+    private ArrayList<Recipe> mRecipe;
+    private Recipe recipe;
+    private Bundle recipeBundle;
 
     public RecipeDetailFragment() {
-        // Required empty public constructor
+
     }
 
     public static RecipeDetailFragment newInstance(){
         RecipeDetailFragment fragment = new RecipeDetailFragment();
+        Bundle recipeBundle = fragment.getArguments();
+        name = (String) recipeBundle.get("name");
         return fragment;
     }
 
@@ -34,6 +43,7 @@ public class RecipeDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -41,11 +51,16 @@ public class RecipeDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_recipe_detail,container,false);
         mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+
+        //this is where i set the data
+
+
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         return layout;
     }
 
     public void onAttach(@NonNull Context context){
+
         super.onAttach(context);
     }
 
@@ -59,6 +74,7 @@ public class RecipeDetailFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.action_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
+                // arraylist
                 
                 return true;
         }

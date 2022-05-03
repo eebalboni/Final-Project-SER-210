@@ -61,9 +61,6 @@ public class AddFoodFragment extends Fragment  {
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
         view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickRf);
 
-
-
-//        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
 
@@ -86,6 +83,7 @@ public class AddFoodFragment extends Fragment  {
         callDataBase(d);
         Toast toast = Toast.makeText(getContext(), "Item added to your pantry", Toast.LENGTH_LONG);
         toast.show();
+        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
     private void onClickRf(View view) {
@@ -98,7 +96,7 @@ public class AddFoodFragment extends Fragment  {
 
         Toast toast = Toast.makeText(getContext(), "Item added to your refrigerator", Toast.LENGTH_LONG);
         toast.show();
-
+        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
 
     }
 
