@@ -8,16 +8,11 @@
     <string name="pantry_tab">Pantry</string>
     <string name="action_delete">Delete</string>
     <string name="app_name">Be prePEARed</string>
-    <string name="about_text">How the app works:Please use the navigation bar in order
-to access each page. To log a food item that was just bought go to the find food item
-screen. There you will be prompted to enter the food item and then press the button to search for the food item. You will then be prompted
-to enter an expiration date and select where the food item belongs (fridge/pantry). To look up a recipe, please visit the find recipe screen.
-There you will enter a recipe you are looking for and a page with all recipes you can make based on the food you have will be displayed.
-You also can visit recipes and view them on the view recipe page.</string>
+    <string name="about_text">How the app works: To view ingredients visit My Food tab. Visit Search Ingredient to add ingredients to your kitchen.
+    To find a recipe, visit Search Recipes. To view favorite recipes visit Favorite Recipes tab. </string>
     <string name="inspiration_text">This app was created to help people avoid wasting food and those who are passionate about cooking!
-    As college students, we wanted to make cooking easy and manageable. This app helps users cook with what they have, whcih is especially
-    helpful when it comes to living at school with a limited food in our kitchens.</string>
-    <string name="developers">App created by Jonathan Mason, Emily Balboni and Amber Kusma</string>
+    As college students, we wanted to make cooking easy and manageable. Hope you enjoy!</string>
+    <string name="developers">App created by: Jonathan Mason, Emily Balboni and Amber Kusma</string>
     <string name="ingredient_name">Name</string>
     <string name="date">Date</string>
     <string name="nutrition">Nutrition</string>
