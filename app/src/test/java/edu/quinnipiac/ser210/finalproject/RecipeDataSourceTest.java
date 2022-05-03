@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-
+@RunWith(AndroidJUnit4.class)
 public class RecipeDataSourceTest {
     RecipeDataSource recipeDataSource;
     @Before
@@ -32,9 +32,13 @@ public class RecipeDataSourceTest {
         recipeDataSource.createRecipe("Bread","bananas","10","Bake");
         List<Recipe> l = recipeDataSource.getAllRecipes();
         assertTrue(l.get(0).getName().equals("Bread"));
+        System.out.println(l.get(0).getName());
         assertTrue(l.get(0).getIngredients().equals("bananas"));
+        System.out.println(l.get(0).getIngredients());
         assertTrue(l.get(0).getInstructions().equals("Bake"));
+        System.out.println(l.get(0).getInstructions());
         assertTrue(l.get(0).getServings().equals("10"));
+        System.out.println(l.get(0).getServings());
     }
 
     @Test

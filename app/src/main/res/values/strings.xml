@@ -1,6 +1,7 @@
 <resources>
     <string name="menu_home">Home</string>
     <string name="menu_food_items">My Food</string>
+    <string name="action_share">Share</string>
     <string name="menu_search_ingredients">Search Ingredients</string>
     <string name="menu_favorite_recipes">Favorite Recipes</string>
     <string name="menu_search_recipes">Search Recipes</string>
