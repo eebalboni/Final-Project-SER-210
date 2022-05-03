@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -86,8 +87,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
                 dataSource.open();
                 Ingredient currentIngredient = mIngredientData.get(position);
-                CheckBox ch = holder.cardView.findViewById(R.id.check);
-                ch.setOnClickListener(new View.OnClickListener() {
+                ImageButton delete = holder.cardView.findViewById(R.id.trash);
+                delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dataSource.deleteIngredient(currentIngredient);
