@@ -53,16 +53,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, int position) {
         Recipe currentRecipe = mRecipeData.get(position);
         holder.bindTo(currentRecipe);
-       // mBundle.putString("name", mRecipeData.get(position).getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                navController = new NavController(mContext);
-                navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_recipeListFragment_to_recipeDetailFragment, mBundle);
-            }
-        });
-
     }
 
     @Override
@@ -79,7 +69,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         private TextView mNameText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             mNameText = itemView.findViewById(R.id.recipeName);
         }
 

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    >
 
-    <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RecipeListFragment">
+        tools:context=".RecipeListFragment"
+        android:id="@+id/recipeListFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -16,5 +18,9 @@
             android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ListView>
 </FrameLayout>

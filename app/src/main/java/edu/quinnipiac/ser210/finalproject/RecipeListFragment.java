@@ -11,7 +11,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,12 +25,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class RecipeListFragment extends Fragment {
+public class RecipeListFragment extends ListFragment {
 
     private RecipeDataSource dataSource;
     private RecyclerView mRecyclerView;
@@ -35,11 +39,9 @@ public class RecipeListFragment extends Fragment {
     private ArrayList<Recipe> mRecipeData;
     private RecipeAdapter mRecipeAdapter;
     private RecipeHandler mRecipeHandler = new RecipeHandler();
-
+    private NavController navController;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-
 
 
     // TODO: Rename and change types of parameters
@@ -67,7 +69,6 @@ public class RecipeListFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
             mRecipeData = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
         }
-
     }
 
 
@@ -92,8 +93,12 @@ public class RecipeListFragment extends Fragment {
 
         mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity(),savedInstanceState);
         mRecyclerView.setAdapter(mRecipeAdapter);
+        String name = mRecipeData.get(1).toString();
+
         return view;
     }
+
+
 
     public void setRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;
@@ -102,6 +107,22 @@ public class RecipeListFragment extends Fragment {
     public void replaceRecipeData(ArrayList<Recipe> newData){
         mRecipeData = newData;
         mRecipeAdapter.updateList(mRecipeData);
+    }
+
+    @Override
+    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id){
+        navController = new NavController(v.getContext());
+        navController = Navigation.findNavController(v);
+        Bundle b = new Bundle();
+        String recipeName = mRecipeData.get(position).getName();
+        String recipeServing = mRecipeData.get(position).getServings();
+        String recipeIngredient = mRecipeData.get(position).getIngredients();
+        String recipeInstruction = mRecipeData.get(position).getInstructions();
+        b.putString("title",recipeName);
+        b.putString("serving",recipeServing);
+        b.putString("ingredient",recipeIngredient);
+        b.putString("instruction",recipeInstruction);
+        navController.navigate(R.id.action_recipeListFragment_to_recipeDetailFragment,b);
     }
 }
 

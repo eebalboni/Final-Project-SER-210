@@ -12,4 +12,34 @@
         android:background="@color/mellow_blue"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeHolder" />
+
+        <TextView
+            android:id="@+id/servingSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeHOlder" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeHolder" />
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="placeHolder" />
+    </LinearLayout>
 </FrameLayout>

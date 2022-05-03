@@ -16,33 +16,30 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class RecipeDetailFragment extends Fragment {
-    private static String name;
     private Toolbar mToolbar;
     private ShareActionProvider mShareActionProvider;
     private ArrayList<Recipe> mRecipe;
     private Recipe recipe;
     private Bundle recipeBundle;
+    private ArrayList<Recipe> mRecipeData;
+    private RecipeDataSource rData;
+    private String name,serving,ingredient,instruction;
 
-    public RecipeDetailFragment() {
-
-    }
-
-    public static RecipeDetailFragment newInstance(){
-        RecipeDetailFragment fragment = new RecipeDetailFragment();
-        Bundle recipeBundle = fragment.getArguments();
-        name = (String) recipeBundle.get("name");
-        return fragment;
-    }
-
+    public RecipeDetailFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+         name = getArguments().getString("name");
+         serving = getArguments().getString("serving");
+         ingredient = getArguments().getString("ingredient");
+         instruction = getArguments().getString("instruction");
 
     }
 
@@ -51,9 +48,16 @@ public class RecipeDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_recipe_detail,container,false);
         mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+        rData = new RecipeDataSource(layout.getContext());
 
-        //this is where i set the data
-
+        TextView title = layout.findViewById(R.id.rName);
+        title.setText(name);
+        TextView servings = layout.findViewById(R.id.servingSize);
+        servings.setText(serving);
+        TextView ingredients = layout.findViewById(R.id.ingredients);
+        ingredients.setText(ingredient);
+        TextView direction = layout.findViewById(R.id.instruction);
+        direction.setText(instruction);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         return layout;
@@ -75,7 +79,7 @@ public class RecipeDetailFragment extends Fragment {
             case R.id.action_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 // arraylist
-                
+                //intent.putExtras("Recipe name",mRecipeData)
                 return true;
         }
         return false;
