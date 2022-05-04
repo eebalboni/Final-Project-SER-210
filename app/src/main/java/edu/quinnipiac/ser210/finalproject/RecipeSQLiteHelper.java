@@ -31,7 +31,7 @@ public class RecipeSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_RECIPE + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_RECIPE
-            + " text not null, " + COLUMN_INGREDIENTS + " text not null, " + COLUMN_SERVINGS + " text not null, " + COLUMN_INSTRUCTIONS + " text not null);";
+            + " text not null, " + COLUMN_INGREDIENTS + " text not null, " + COLUMN_SERVINGS + " text not null, " + COLUMN_INSTRUCTIONS + " text not null );";
 
     public RecipeSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

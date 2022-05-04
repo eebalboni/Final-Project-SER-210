@@ -77,8 +77,8 @@ public class RecipeDataSource {
         recipe.setId(cursor.getLong(0));
         recipe.setName(cursor.getString(1));
         recipe.setIngredients(cursor.getString(2));
-        recipe.setServings(cursor.getString(2));
-        recipe.setInstructions(cursor.getString(3));
+        recipe.setServings(cursor.getString(3));
+        recipe.setInstructions(cursor.getString(4));
         return recipe;
     }
 }
