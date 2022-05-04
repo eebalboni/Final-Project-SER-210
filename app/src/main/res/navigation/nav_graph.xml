@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="edu.quinnipiac.ser210.finalproject.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_ingredientTabsFragment"
+            app:destination="@id/ingredientTabsFragment" />
+        <action
+            android:id="@+id/action_home2_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_home2_to_findFoodFragment"
+            app:destination="@id/findFoodFragment" />
+        <action
+            android:id="@+id/action_home2_to_findRecipeFragment"
+            app:destination="@id/findRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientTabsFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.IngredientTabsFragment"
+        android:label="fragment_ingredient_tabs"
+        tools:layout="@layout/fragment_ingredient_tabs" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/findFoodFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.FindFoodFragment"
+        android:label="fragment_find_food"
+        tools:layout="@layout/fragment_find_food" >
+        <action
+            android:id="@+id/action_findFoodFragment_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.AddFoodFragment"
+        android:label="fragment_add_food"
+        tools:layout="@layout/fragment_add_food" >
+        <action
+            android:id="@+id/action_addFoodFragment_to_findFoodFragment"
+            app:destination="@id/findFoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findRecipeFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.FindRecipeFragment"
+        android:label="FindRecipeFragment" >
+        <action
+            android:id="@+id/action_findRecipeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="edu.quinnipiac.ser210.finalproject.RecipeListFragment"
+        android:label="RecipeListFragment" />
+</navigation>

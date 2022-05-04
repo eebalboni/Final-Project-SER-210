@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FindFoodFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/submitRButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="228dp"
+            android:text="ENTER"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enterRecipe" />
+
+        <TextView
+            android:id="@+id/recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="99dp"
+            android:layout_marginBottom="17dp"
+            android:text="ENTER RECIPE BELOW"
+            app:layout_constraintBottom_toTopOf="@+id/chefPic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/chefPic"
+            android:layout_width="215dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="39dp"
+            android:src="@drawable/cheff"
+            app:layout_constraintBottom_toTopOf="@+id/enterRecipe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe" />
+
+        <EditText
+            android:id="@+id/enterRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="17dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Search Recipe"
+            app:layout_constraintBottom_toTopOf="@+id/submitRButton"
+            app:layout_constraintEnd_toEndOf="@+id/chefPic"
+            app:layout_constraintTop_toBottomOf="@+id/chefPic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
