@@ -41,7 +41,6 @@ public class RecipeDetailFragment extends Fragment {
          serving = getArguments().getString("serving");
          ingredient = getArguments().getString("ingredient");
          instruction = getArguments().getString("instruction");
-
     }
 
     @Override
