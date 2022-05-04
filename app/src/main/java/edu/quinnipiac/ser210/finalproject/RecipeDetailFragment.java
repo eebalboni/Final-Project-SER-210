@@ -49,7 +49,6 @@ public class RecipeDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_recipe_detail,container,false);
         mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
-        rData = new RecipeDataSource(layout.getContext());
 
         TextView title = layout.findViewById(R.id.rName);
         title.setText(name);
@@ -69,17 +68,20 @@ public class RecipeDetailFragment extends Fragment {
         super.onAttach(context);
     }
 
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater){
+   public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater){
         super.onCreateOptionsMenu(menu,inflater);
         inflater.inflate(R.menu.main_menu,menu);
-
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.action_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtras(b);
+                intent.putExtra("Title",name);
+                intent.putExtra("Serving Size",serving);
+                intent.putExtra("Ingredients",ingredient);
+                intent.putExtra("instructions",instruction);
+                startActivity(intent);
                 return true;
         }
         return false;

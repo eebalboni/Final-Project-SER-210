@@ -16,7 +16,11 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+            </intent-filter>
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

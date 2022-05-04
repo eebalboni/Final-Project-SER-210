@@ -26,19 +26,26 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     private Context mContext;
     private NavController navController;
     private Bundle mBundle;
+    private RecyclerViewOnClickListener listener;
 
-    public RecipeAdapter(ArrayList<Recipe> recipeData, Context context, Bundle bundle){
+    public RecipeAdapter(ArrayList<Recipe> recipeData, Context context, Bundle bundle,RecyclerViewOnClickListener listener){
         mRecipeData = recipeData;
         mContext = context;
         recipeListFrag.setRecipeData(mRecipeData);
         mBundle = bundle;
+        this.listener = listener;
 
     }
+
+    public interface RecyclerViewOnClickListener{
+        void recyclerViewClick(int position);
+    }
+
 
     @NonNull
     @Override
     public RecipeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, parent, false),this.listener);
     }
 
     public void setRecipeData(ArrayList<Recipe>recipeData){
@@ -67,10 +74,19 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mNameText;
-        public ViewHolder(@NonNull View itemView) {
+        private RecyclerViewOnClickListener mListener;
+        public ViewHolder(@NonNull View itemView, RecyclerViewOnClickListener listener) {
             super(itemView);
-            mNameText = itemView.findViewById(R.id.recipeName);
+            this.mListener = listener;
+            this.mNameText = itemView.findViewById(R.id.recipeName);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.recyclerViewClick(getAdapterPosition());
+                }
+            });
         }
+
 
         public void bindTo(Recipe currentRecipe){
             mNameText.setText(currentRecipe.getName());

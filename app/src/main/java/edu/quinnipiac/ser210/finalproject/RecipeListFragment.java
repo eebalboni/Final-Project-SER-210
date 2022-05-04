@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class RecipeListFragment extends ListFragment {
+public class RecipeListFragment extends Fragment implements RecipeAdapter.RecyclerViewOnClickListener{
 
     private RecipeDataSource dataSource;
     private RecyclerView mRecyclerView;
@@ -49,7 +49,6 @@ public class RecipeListFragment extends ListFragment {
     private String mParam2;
     public RecipeListFragment(){}
 
-
     public static RecipeListFragment newInstance(String param1, String param2) {
         RecipeListFragment fragment = new RecipeListFragment();
         Bundle args = new Bundle();
@@ -59,7 +58,11 @@ public class RecipeListFragment extends ListFragment {
         return fragment;
     }
 
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,6 @@ public class RecipeListFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
-        //i stored the recipe title
 
         mRecyclerView = view.findViewById(R.id.recipeRecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -91,9 +93,10 @@ public class RecipeListFragment extends ListFragment {
             dataSource.close();
         }
 
-        mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity(),savedInstanceState);
+        mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity(),savedInstanceState,this);
         mRecyclerView.setAdapter(mRecipeAdapter);
         String name = mRecipeData.get(1).toString();
+
 
         return view;
     }
@@ -109,16 +112,15 @@ public class RecipeListFragment extends ListFragment {
         mRecipeAdapter.updateList(mRecipeData);
     }
 
+    //reference code : https://stackoverflow.com/questions/52146732/how-to-do-you-implement-a-recyclerview-onclick-in-a-fragment
     @Override
-    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id){
-        navController = new NavController(v.getContext());
-        navController = Navigation.findNavController(v);
-        Bundle b = new Bundle();
+    public void recyclerViewClick(int position) {
         String recipeName = mRecipeData.get(position).getName();
         String recipeServing = mRecipeData.get(position).getServings();
         String recipeIngredient = mRecipeData.get(position).getIngredients();
         String recipeInstruction = mRecipeData.get(position).getInstructions();
-        b.putString("title",recipeName);
+        Bundle b = new Bundle();
+        b.putString("name",recipeName);
         b.putString("serving",recipeServing);
         b.putString("ingredient",recipeIngredient);
         b.putString("instruction",recipeInstruction);
