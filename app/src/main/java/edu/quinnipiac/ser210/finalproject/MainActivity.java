@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // retrieve expiration date from database
+        //cursor.readDatabase():
+        //String[]columns (FoodDB.NAMW, FoodDB.EXPDATE);
+        //int[]
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
