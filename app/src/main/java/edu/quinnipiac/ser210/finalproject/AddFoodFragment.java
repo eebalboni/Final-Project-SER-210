@@ -32,12 +32,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,6 +51,8 @@ public class AddFoodFragment extends Fragment  {
     IngredientDataSource dataSource;
     Button pantryButton;
     String expDate;
+    CalendarView calendarView;
+    SimpleDateFormat simpleDateFormat;
 
 
 
@@ -64,20 +68,8 @@ public class AddFoodFragment extends Fragment  {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        //view.findViewById(R.id.datepicker).setOnClickListener((View.OnClickListener) this);
         view.findViewById(R.id.pantry).setOnClickListener(this::onClickPn);
         view.findViewById(R.id.refrigerator).setOnClickListener(this::onClickRf);
-       // expDate = (TextView) getActivity().findViewById(R.id.datepicker);
-        Calendar date = Calendar.getInstance();
-// for your date format use
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-// set a string to format your current date
-        expDate = simpleDateFormat.format(date.getTime());
-// print the date in your log cat
-        Log.d("EXP_DATE", expDate);
-
-
-//        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
 
@@ -85,26 +77,28 @@ public class AddFoodFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(fragment_add_food,container,false);
+        simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        calendarView = layout.findViewById(R.id.datepicker);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(i, i1, i2);
+                expDate = simpleDateFormat.format(calendar.getTimeInMillis());
+            }
+        });
+
         dataSource = new IngredientDataSource(layout.getContext());
         dataSource.open();
 
         return layout;
     }
 
-//    public void onDateSet(DatePicker view, int day, int month, int year ) {
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.YEAR, year);
-//        calendar.set(Calendar.MONTH, month);
-//        calendar.set(Calendar.DAY_OF_MONTH, day);
-//
-//        String todayDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-//        expDate.setText(todayDate);
-//    }
-
-
 
     private void onClickPn(View view) {
        // EditText date =  getView().findViewById(R.id.datepicker) ;
+        Log.d("Date", expDate);
         String d = expDate;
 
         location = "pantry";
