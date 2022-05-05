@@ -55,11 +55,13 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Recipe> mRecipeData;
+    private ArrayList<Recipe> mTempData;
     private RecipeAdapter mRecipeAdapter;
     private RecipeHandler mRecipeHandler = new RecipeHandler();
     private NavController navController;
     private Toolbar mToolbar;
     private ArrayList<Recipe> updatedRecipeList;
+    private boolean isFiltered;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -117,6 +119,10 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
         mRecyclerView.setAdapter(mRecipeAdapter);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
+
+        //Set isFiltered to false
+        isFiltered = false;
+
         return view;
     }
 
@@ -165,24 +171,32 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
 
         switch (item.getItemId()){
             case R.id.action_filter:
-                updatedRecipeList = new ArrayList<Recipe> ();
-                ArrayList<Ingredient> allIngredients = (ArrayList<Ingredient>) ingredientDataSource.getAllIngredients();
-                int size = mRecipeData.size();
-                for(int i = 0; i < size; i++) {
-                   String currentIng =  mRecipeData.get(i).getServings().toLowerCase();
-                   Log.d("Reach",currentIng);
-                   for(int j = 0; j < allIngredients.size();j++){
-                       Log.d("something", allIngredients.get(j).getName().toLowerCase());
-                       if(currentIng.contains(allIngredients.get(j).getName().toLowerCase())){
-                           updatedRecipeList.add(mRecipeData.get(i));
-                           Log.d("cur contains", currentIng.contains(allIngredients.get(j).getName().toLowerCase()) + "");
-                           break;
-                       }
-                   }
+                if(isFiltered == false){
+                    updatedRecipeList = new ArrayList<Recipe> ();
+                    mTempData = mRecipeData;
+                    ArrayList<Ingredient> allIngredients = (ArrayList<Ingredient>) ingredientDataSource.getAllIngredients();
+                    int size = mRecipeData.size();
+                    for(int i = 0; i < size; i++) {
+                        String currentIng =  mRecipeData.get(i).getIngredients().toLowerCase();
+                        Log.d("Reach",currentIng);
+                        for(int j = 0; j < allIngredients.size();j++){
+                            Log.d("something", allIngredients.get(j).getName().toLowerCase());
+                            if(currentIng.contains(allIngredients.get(j).getName().toLowerCase())){
+                                updatedRecipeList.add(mRecipeData.get(i));
+                                Log.d("cur contains", currentIng.contains(allIngredients.get(j).getName().toLowerCase()) + "");
+                                break;
+                            }
+                        }
+                    }
+                    if(updatedRecipeList != null){
+                        replaceRecipeData(updatedRecipeList);
+                    } //else
+                    isFiltered = true;
+                }else{
+                    Log.d("reset", "reset");
+                    replaceRecipeData(mTempData);
+                    isFiltered = false;
                 }
-                if(updatedRecipeList != null){
-                    replaceRecipeData(updatedRecipeList);
-                } //else
                 break;
         }
         return super.onOptionsItemSelected(item);
