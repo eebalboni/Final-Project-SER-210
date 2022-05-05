@@ -84,22 +84,19 @@ public class RecipeDetailFragment extends Fragment {
         provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem)menu.findItem(R.id.action_share));
     }
 
+    //referenced https://www.youtube.com/watch?v=3LyMLAHtRZk
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.action_share:
-                ApplicationInfo info = getActivity().getApplicationInfo();
-                String apPath = info.sourceDir;
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra("name",name);
-                intent.putExtra("serving", serving);
-                intent.putExtra("ingredient", ingredient);
-                intent.putExtra("instruction",instruction);
-                provider.setShareIntent(intent);
-                return true;
+                intent.putExtra(Intent.EXTRA_TEXT,name + "\n" + serving + "\n" + ingredient + "\n" + instruction);
+
+                startActivity(Intent.createChooser(intent,"Share Recipe"));
+                break;
         }
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
 
