@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -11,9 +11,18 @@
         tools:context=".RecipeListFragment"
         android:id="@+id/recipeListFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/recipeToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mellow_blue"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="Recipes"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipeRecyclerView"
+            android:layout_below="@+id/recipeToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

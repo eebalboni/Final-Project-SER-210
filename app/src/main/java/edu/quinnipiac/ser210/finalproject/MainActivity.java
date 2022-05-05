@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 navController.navigate(R.id.action_home2_to_findRecipeFragment);
                 break;
             case R.id.nav_favorite_recipes:
-                navController.navigate(R.id.action_home2_to_favoriteRecipesList);
+                navController.navigate(R.id.action_home2_to_recipeListFragment);
                 break;
         }
 

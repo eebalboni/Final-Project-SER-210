@@ -20,7 +20,7 @@ public class RecipeSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_INSTRUCTIONS = "instructions";
     public static final String COLUMN_FAVORITE = "favorite";
 
-    public static final String DATABASE_NAME = "ingredients.db";
+    public static final String DATABASE_NAME = "recipes.db";
     private static final int DATABASE_VERSION = 1;
 
     // implemented after COLLUMN_RECIPE
@@ -44,7 +44,7 @@ public class RecipeSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(IngredientSQLiteHelper.class.getName(),
+        Log.w(RecipeSQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPE);

@@ -6,12 +6,17 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
 package edu.quinnipiac.ser210.finalproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 import androidx.navigation.NavController;
@@ -22,6 +27,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -31,19 +39,23 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class RecipeListFragment extends Fragment implements RecipeAdapter.RecyclerViewOnClickListener{
 
     private RecipeDataSource dataSource;
+    private IngredientDataSource ingredientDataSource;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Recipe> mRecipeData;
     private RecipeAdapter mRecipeAdapter;
     private RecipeHandler mRecipeHandler = new RecipeHandler();
     private NavController navController;
+    private Toolbar mToolbar;
+    private ArrayList<Recipe> updatedRecipeList;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -57,12 +69,6 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
     }
 
     @Override
@@ -81,6 +87,13 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+        ingredientDataSource = new IngredientDataSource(view.getContext());
+        ingredientDataSource.open();
+
+        //toolbar
+        mToolbar = (Toolbar) view.findViewById(R.id.recipeToolbar);
+        mToolbar.inflateMenu(R.menu.recipe_menu);
+        setHasOptionsMenu(true);
 
         mRecyclerView = view.findViewById(R.id.recipeRecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -98,7 +111,15 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
         mRecyclerView.setAdapter(mRecipeAdapter);
         String name = mRecipeData.get(1).toString();
 
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+
     }
 
 
@@ -125,6 +146,41 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
         b.putString("ingredient",recipeIngredient);
         b.putString("instruction",recipeInstruction);
         navController.navigate(R.id.action_recipeListFragment_to_recipeDetailFragment,b);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater){
+        inflater.inflate(R.menu.recipe_menu,menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        Log.d("Reach","you made it!");
+
+        switch (item.getItemId()){
+            case R.id.action_filter:
+                updatedRecipeList = new ArrayList<Recipe> ();
+                ArrayList<Ingredient> allIngredients = (ArrayList<Ingredient>) ingredientDataSource.getAllIngredients();
+                int size = mRecipeData.size();
+                for(int i = 0; i < size; i++) {
+                   String currentIng =  mRecipeData.get(i).getServings().toLowerCase();
+                   Log.d("Reach",currentIng);
+                   for(int j = 0; j < allIngredients.size();j++){
+                       Log.d("something", allIngredients.get(j).getName().toLowerCase());
+                       if(currentIng.contains(allIngredients.get(j).getName().toLowerCase())){
+                           updatedRecipeList.add(mRecipeData.get(i));
+                           Log.d("cur contains", currentIng.contains(allIngredients.get(j).getName().toLowerCase()) + "");
+                           break;
+                       }
+                   }
+                }
+                if(updatedRecipeList != null){
+                    replaceRecipeData(updatedRecipeList);
+                } //else
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
