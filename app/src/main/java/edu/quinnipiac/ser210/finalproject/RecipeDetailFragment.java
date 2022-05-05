@@ -70,6 +70,7 @@ public class RecipeDetailFragment extends Fragment {
         mToolbar.inflateMenu(R.menu.main_menu);
         setHasOptionsMenu(true);
 
+
         TextView title = layout.findViewById(R.id.rName);
         title.setText(name);
         TextView servings = layout.findViewById(R.id.servingSize);
