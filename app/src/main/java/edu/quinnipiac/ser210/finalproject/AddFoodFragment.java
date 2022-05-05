@@ -107,6 +107,7 @@ public class AddFoodFragment extends Fragment  {
         callDataBase(d);
         Toast toast = Toast.makeText(getContext(), "Item added to your pantry", Toast.LENGTH_LONG);
         toast.show();
+        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
     }
 
     private void onClickRf(View view) {
@@ -116,7 +117,7 @@ public class AddFoodFragment extends Fragment  {
         callDataBase(d);
         Toast toast = Toast.makeText(getContext(), "Item added to your refrigerator", Toast.LENGTH_LONG);
         toast.show();
-
+        navController.navigate(R.id.action_addFoodFragment_to_findFoodFragment);
 
     }
 

@@ -23,7 +23,7 @@ public class RecipeHandler {
             String servings = curObject.getString("servings");
             String instructions = curObject.getString("instructions");
 
-            result.add(new Recipe(name, ingredients, servings, instructions));
+            result.add(new Recipe(name, ingredients, servings, instructions,"false"));
             //String result = "Recipe " + name +"\nIngredients " + ingredients + "\nServings: " + servings + "\nInstructions " + instructions ;
         }
 

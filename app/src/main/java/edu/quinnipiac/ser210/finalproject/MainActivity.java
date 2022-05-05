@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // retrieve expiration date from database
+        //cursor.readDatabase():
+        //String[]columns (FoodDB.NAMW, FoodDB.EXPDATE);
+        //int[]
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -82,7 +87,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_search_recipes:
                 navController.navigate(R.id.action_home2_to_findRecipeFragment);
+                break;
+            case R.id.nav_favorite_recipes:
+                navController.navigate(R.id.action_home2_to_favoriteRecipesList);
+                break;
         }
+
         drawerLayout.closeDrawers();
         return false;
     }

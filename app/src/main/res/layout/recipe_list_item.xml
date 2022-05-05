@@ -7,8 +7,10 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
+    android:clickable="true"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:id="@+id/myRecipe">
 
     <RelativeLayout
         android:layout_width="match_parent"

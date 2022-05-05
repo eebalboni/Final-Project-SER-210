@@ -102,6 +102,7 @@ public class IngredientListFragment extends Fragment {
     }
 
 
+
     public void setIngredientData(ArrayList<Ingredient> ingredientData) {
         mIngredientData = ingredientData;
     }
