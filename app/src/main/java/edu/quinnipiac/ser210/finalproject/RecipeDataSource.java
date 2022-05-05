@@ -42,7 +42,6 @@ public class RecipeDataSource {
         values.put(RecipeSQLiteHelper.COLUMN_INGREDIENTS, ingredients);
         values.put(RecipeSQLiteHelper.COLUMN_SERVINGS, servings);
         values.put(RecipeSQLiteHelper.COLUMN_INSTRUCTIONS, instructions);
-        //values.put(RecipeSQLiteHelper.COLUMN_FAVORITE, isFavorite);
 
         long insertId = database.insert(RecipeSQLiteHelper.TABLE_RECIPE, null, values);
         Cursor cursor = database.query(RecipeSQLiteHelper.TABLE_RECIPE, allColumns, RecipeSQLiteHelper.COLUMN_ID + " = " + insertId, null, null, null, null);
@@ -72,13 +71,14 @@ public class RecipeDataSource {
         return recipes;
     }
 
+    //stack overflow for reference
     public Recipe cursorToRecipe(Cursor cursor){
         Recipe recipe = new Recipe();
         recipe.setId(cursor.getLong(0));
         recipe.setName(cursor.getString(1));
         recipe.setIngredients(cursor.getString(2));
-        recipe.setServings(cursor.getString(2));
-        recipe.setInstructions(cursor.getString(3));
+        recipe.setServings(cursor.getString(3));
+        recipe.setInstructions(cursor.getString(4));
         return recipe;
     }
 }
