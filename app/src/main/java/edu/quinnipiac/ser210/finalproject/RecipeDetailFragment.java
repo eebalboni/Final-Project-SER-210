@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,9 +54,9 @@ public class RecipeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_recipe_detail,container,false);
-        mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
-        mToolbar.setNavigationIcon(R.drawable.ic_baseline_share_24);
+        mToolbar = (Toolbar) layout.findViewById(R.id.rtoolbar);
         mToolbar.inflateMenu(R.menu.main_menu);
+        setHasOptionsMenu(true);
 
         TextView title = layout.findViewById(R.id.rName);
         title.setText(name);
@@ -75,11 +76,13 @@ public class RecipeDetailFragment extends Fragment {
         super.onAttach(context);
     }
 
+    @Override
    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater){
         inflater.inflate(R.menu.main_menu,menu);
         provider = (ShareActionProvider) MenuItemCompat.getActionProvider((MenuItem)menu.findItem(R.id.action_share));
     }
 
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.action_share:
