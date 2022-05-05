@@ -11,15 +11,11 @@ Author: Jonathan Mason, Amber Kusma
 
 package edu.quinnipiac.ser210.finalproject;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 public class RecipeHandler {
 
     public static ArrayList<Recipe> getRecipe(String recipeJsonStr) throws JSONException{

@@ -5,9 +5,16 @@
       <map>
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_about.xml" value="0.1" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_favorite_recipes_list.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_find_food.xml" value="0.13269927536231885" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_find_recipe.xml" value="0.22554347826086957" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_ingredient_list.xml" value="0.20923913043478262" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_ingredient_tabs.xml" value="0.22554347826086957" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_recipe_detail.xml" value="0.1" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_recipe_list.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/fragment_select_exp_date.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/header_layout.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/ingredient_list_item.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/layout/recipe_list_item.xml" value="0.22554347826086957" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/menu/drawer_menu.xml" value="0.2390625" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/ebalb/OneDrive/Documents/GitHub/Final-Project-SER-210/app/src/main/res/menu/option_menu.xml" value="0.2390625" />

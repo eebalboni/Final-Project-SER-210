@@ -7,7 +7,7 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
 
 /*
 RecipeListFragment class. Creates a recycle view fragment containing recipe data
-Authors: Jonathan Mason, (I don't remember who else worked on this so far)
+Authors: Jonathan Mason, Emily Balboni
  */
 
 package edu.quinnipiac.ser210.finalproject;

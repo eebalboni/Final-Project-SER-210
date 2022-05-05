@@ -11,6 +11,8 @@ Author: Jonathan Mason
  */
 package edu.quinnipiac.ser210.finalproject;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 

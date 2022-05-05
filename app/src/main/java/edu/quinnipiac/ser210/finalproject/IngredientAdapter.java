@@ -6,7 +6,7 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
 /*
 IngredientAdapter class. Binds ingredient data to card views.
-Author: Jonathan Mason
+Author: Jonathan Mason and Emily Balboni
  */
 package edu.quinnipiac.ser210.finalproject;
 
@@ -58,7 +58,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             mNameText.setText(currentIngredient.getName());
             mExpirationDateText.setText(currentIngredient.getExpirationDate());
             mNutritionText.setText(currentIngredient.getNutrition());
-
             Date expDate = new SimpleDateFormat("dd/MM/yyyy").parse(currentIngredient.getExpirationDate());
             Date todayDate = new Date();
             double compare = expDate.compareTo(todayDate);
@@ -82,9 +81,10 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.ingredient_list_item, parent, false));
     }
 
-    //used stack overflow as a reference:
-    // https://stackoverflow.com/questions/52404324/how-to-delete-or-remove-cardview-from-recyclerview-android-studio
+    /*
+    used stack overflow as a reference: https://stackoverflow.com/questions/52404324/how-to-delete-or-remove-cardview-from-recyclerview-android-studio
     @Override
+     */
     public void onBindViewHolder(@NonNull IngredientAdapter.ViewHolder holder, int position) {
                 dataSource.open();
                 Ingredient currentIngredient = mIngredientData.get(position);
