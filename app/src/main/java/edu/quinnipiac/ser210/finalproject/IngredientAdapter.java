@@ -58,10 +58,13 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             mNameText.setText(currentIngredient.getName());
             mExpirationDateText.setText(currentIngredient.getExpirationDate());
             mNutritionText.setText(currentIngredient.getNutrition());
-            Date expDate = new SimpleDateFormat("dd/MM/yyyy").parse(currentIngredient.getExpirationDate());
+            Date expDate = new SimpleDateFormat("MM/dd/yyyy").parse(currentIngredient.getExpirationDate());
             Date todayDate = new Date();
             double compare = expDate.compareTo(todayDate);
             if(compare < 0){
+                String temp = (String) mExpirationDateText.getText();
+                temp = temp + " EXPIRED";
+                mExpirationDateText.setText(temp);
                 mExpirationDateText.setTextColor(R.color.red);
             }
         }
