@@ -89,6 +89,7 @@ public class AddFoodFragment extends Fragment  {
             }
         });
 
+
         dataSource = new IngredientDataSource(layout.getContext());
         dataSource.open();
 

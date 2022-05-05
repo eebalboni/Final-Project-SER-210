@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.Window;
 import android.widget.ArrayAdapter;
 
 import com.google.android.material.navigation.NavigationView;
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);

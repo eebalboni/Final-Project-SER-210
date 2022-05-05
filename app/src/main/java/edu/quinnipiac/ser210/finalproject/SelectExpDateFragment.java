@@ -41,5 +41,6 @@ public class SelectExpDateFragment extends DialogFragment implements DatePickerD
 
         TextView dateText = (TextView) getActivity().findViewById(R.id.datepicker);
         dateText.setText(month+"/"+day+"/"+year);
+
     }
 }

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/teal_200"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark" />\
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />\
 
         <fragment
             android:id="@+id/nav_host_fragment"
