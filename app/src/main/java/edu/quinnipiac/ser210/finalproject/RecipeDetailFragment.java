@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
@@ -37,7 +38,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class RecipeDetailFragment extends Fragment {
-    private Toolbar mToolbar;
+    private Toolbar mToolbar,mainToolbar;
     private ShareActionProvider mShareActionProvider;
     private ArrayList<Recipe> mRecipe;
     private Recipe recipe;
@@ -69,6 +70,8 @@ public class RecipeDetailFragment extends Fragment {
 
         mToolbar.inflateMenu(R.menu.main_menu);
         setHasOptionsMenu(true);
+
+        //mainToolbar = (Toolbar) layout.findViewById(R.id.mainToolBar);
 
 
         TextView title = layout.findViewById(R.id.rName);
