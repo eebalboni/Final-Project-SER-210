@@ -115,7 +115,6 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
 
         mRecipeAdapter = new RecipeAdapter(mRecipeData, this.getActivity(),savedInstanceState,this);
         mRecyclerView.setAdapter(mRecipeAdapter);
-        String name = mRecipeData.get(1).toString();
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         return view;
