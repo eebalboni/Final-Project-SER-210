@@ -54,6 +54,7 @@ public class RecipeDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_recipe_detail,container,false);
         mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+
         mToolbar.setNavigationIcon(R.drawable.ic_baseline_share_24);
         mToolbar.inflateMenu(R.menu.main_menu);
 

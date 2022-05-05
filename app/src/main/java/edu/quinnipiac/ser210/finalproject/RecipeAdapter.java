@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +28,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     private NavController navController;
     private Bundle mBundle;
     private RecyclerViewOnClickListener listener;
+    private RecipeDataSource dataSource;
 
     public RecipeAdapter(ArrayList<Recipe> recipeData, Context context, Bundle bundle,RecyclerViewOnClickListener listener){
         mRecipeData = recipeData;
@@ -35,6 +38,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         this.listener = listener;
 
     }
+
 
     public interface RecyclerViewOnClickListener{
         void recyclerViewClick(int position);
@@ -47,18 +51,30 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, parent, false),this.listener);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        dataSource.open();
+        Recipe currentRecipe = mRecipeData.get(position);
+        CheckBox checkBox = holder.cardView.findViewById(R.id.star);
+        String name = currentRecipe.getName();
+        String serving = currentRecipe.getServings();
+        String ingredient = currentRecipe.getIngredients();
+        String instruction = currentRecipe.getInstructions();
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //update recipe info here
+                dataSource.createRecipe(name,serving,ingredient,instruction);
+            }
+        });
+    }
+
     public void setRecipeData(ArrayList<Recipe>recipeData){
         if(recipeData!=null){
             mRecipeData = recipeData;
             recipeListFrag.replaceRecipeData(mRecipeData);
         }
 
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, int position) {
-        Recipe currentRecipe = mRecipeData.get(position);
-        holder.bindTo(currentRecipe);
     }
 
     @Override
@@ -74,10 +90,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mNameText;
         private RecyclerViewOnClickListener mListener;
+        private CardView cardView;
         public ViewHolder(@NonNull View itemView, RecyclerViewOnClickListener listener) {
             super(itemView);
             this.mListener = listener;
+            cardView = (CardView) itemView;
             this.mNameText = itemView.findViewById(R.id.recipeName);
+            CardView cardView = (CardView) itemView;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -85,11 +104,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 }
             });
         }
-
-
-        public void bindTo(Recipe currentRecipe){
-            mNameText.setText(currentRecipe.getName());
-        }
+        public void bindTo(Recipe currentRecipe){ mNameText.setText(currentRecipe.getName());}
     }
 
 }
