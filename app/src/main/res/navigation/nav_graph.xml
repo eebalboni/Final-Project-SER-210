@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_home2_to_findRecipeFragment"
             app:destination="@id/findRecipeFragment" />
+        <action
+            android:id="@+id/action_home2_to_favoriteRecipesList"
+            app:destination="@id/favoriteRecipesList" />
     </fragment>
     <fragment
         android:id="@+id/ingredientTabsFragment"
@@ -75,5 +78,14 @@
         android:id="@+id/recipeDetailFragment"
         android:name="edu.quinnipiac.ser210.finalproject.RecipeDetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_recipe_detail" />
+        tools:layout="@layout/fragment_recipe_detail" >
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteRecipesList"
+        android:name="edu.quinnipiac.ser210.finalproject.FavoriteRecipesList"
+        android:label="fragment_favorite_recipes_list"
+        tools:layout="@layout/fragment_favorite_recipes_list" />
 </navigation>

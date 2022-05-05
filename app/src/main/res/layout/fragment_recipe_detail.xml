@@ -14,13 +14,13 @@
         android:layout_height="wrap_content"
         android:background="@color/mellow_blue"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"/>
+        app:title="Recipe Details"/>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:fillViewport="true"
         android:scrollbars="none">
 
@@ -36,7 +36,7 @@
             android:textSize="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="25dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:textAllCaps="true"
             android:textAlignment="center"
