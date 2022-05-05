@@ -29,7 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class FindFoodFragment extends Fragment implements View.OnClickListener{
+public class FindFoodFragment extends Fragment {
         private static String item;
         NavController navController = null;
         public FindFoodFragment(){
@@ -46,18 +46,16 @@ public class FindFoodFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        view.findViewById(R.id.submitButton).setOnClickListener(this);
+        view.findViewById(R.id.submitButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                EditText foodItem = getView().findViewById(R.id.enterFood);
+                item = foodItem.getText().toString();
+                bundle.putString("item",item);
+                navController.navigate(R.id.action_findFoodFragment_to_addFoodFragment, bundle);
+            }
+        });
     }
 
-    //onClickListener for the submit button
-    //when its clicked navigation graph takes us to next screen
-    @Override
-    public void onClick(View view){
-        Log.d("Reach", "I think ketchup goes well with fries");
-        Bundle bundle = new Bundle();
-        EditText foodItem = getView().findViewById(R.id.enterFood);
-        item = foodItem.getText().toString();
-        bundle.putString("item",item);
-        navController.navigate(R.id.action_findFoodFragment_to_addFoodFragment, bundle);
-    }
 }
