@@ -98,7 +98,6 @@ public class RecipeListFragment extends Fragment implements RecipeAdapter.Recycl
         mRecyclerView.setAdapter(mRecipeAdapter);
         String name = mRecipeData.get(1).toString();
 
-
         return view;
     }
 

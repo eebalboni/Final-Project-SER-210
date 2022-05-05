@@ -31,6 +31,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     private RecipeDataSource dataSource;
 
     public RecipeAdapter(ArrayList<Recipe> recipeData, Context context, Bundle bundle,RecyclerViewOnClickListener listener){
+        dataSource = new RecipeDataSource(context);
         mRecipeData = recipeData;
         mContext = context;
         recipeListFrag.setRecipeData(mRecipeData);
@@ -53,8 +54,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        dataSource.open();
         Recipe currentRecipe = mRecipeData.get(position);
+        holder.bindTo(currentRecipe);
+        dataSource.open();
         CheckBox checkBox = holder.cardView.findViewById(R.id.star);
         String name = currentRecipe.getName();
         String serving = currentRecipe.getServings();
@@ -64,7 +66,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 //update recipe info here
-                dataSource.createRecipe(name,serving,ingredient,instruction);
+               dataSource.createRecipe(name,serving,ingredient,instruction);
             }
         });
     }
