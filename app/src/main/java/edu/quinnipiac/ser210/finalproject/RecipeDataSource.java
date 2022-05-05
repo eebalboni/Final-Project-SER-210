@@ -4,6 +4,11 @@ Professor Ruby
 Be prePEARed app, meant to help users keep track of food and find recipes easily!
 By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
+
+/*
+RecipeDataSource class. Handles logic for adding and retrieving data from the Recipe Database.
+Author: Jonathan Mason
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.content.ContentValues;

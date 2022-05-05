@@ -4,6 +4,11 @@ Professor Ruby
 Be prePEARed app, meant to help users keep track of food and find recipes easily!
 By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
+/*
+IngredientTabsFragment class. Contains two ingredient list fragments for the refrigerator and pantry.
+Allows users to check on what is in their refrigerator and what is in their pantry.
+Author: Jonathan Mason
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.os.AsyncTask;

@@ -6,7 +6,8 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
 
 /*
-Ingrediant class ...
+Ingredient class. Creates an ingredient object that will be used to store data from the nutrition API or ingredient DB.
+Author: Jonathan Mason
  */
 package edu.quinnipiac.ser210.finalproject;
 import java.sql.Date;

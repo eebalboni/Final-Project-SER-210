@@ -4,6 +4,9 @@ Professor Ruby
 Be prePEARed app, meant to help users keep track of food and find recipes easily!
 By: Jonathan Mason, Emily Balboni, and Amber Kusma
  */
+/*
+IngredientHandler class. Converts string buffer into a JSONObject that can be used to get data from the Nutrition API.
+ */
 package edu.quinnipiac.ser210.finalproject;
 
 import android.util.Log;
