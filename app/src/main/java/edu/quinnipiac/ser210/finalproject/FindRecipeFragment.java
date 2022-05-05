@@ -110,26 +110,6 @@ public class FindRecipeFragment extends Fragment implements View.OnClickListener
         fragment.setArguments(args);
         return fragment;
     }
-//    class FetchRecipe extends AsyncTask<String, Void, ArrayList<Recipe>> {
-//
-//        @Override
-//        protected ArrayList<Recipe> doInBackground(String... strings) {
-//            dataSource.open();
-//            List<Recipe> allIngredients = dataSource.getAllRecipes();
-//            return (ArrayList<Recipe>) mRecipe;
-//        }
-//
-//
-//        @Override
-//        protected void onPostExecute(ArrayList<Recipe> recipe) {
-//            mRecipe = recipe;
-//            Log.d(LOG_TAG, mRecipe.size()+"");
-//            for(int i = 0; i < mRecipe.size(); i++){
-//                new FetchRecipe().execute(mRecipe.get(i).getName());
-//            }
-//            dataSource.close();
-//        }
-//    }
 
     class FetchRecipes extends AsyncTask<String, Void, ArrayList<Recipe>>{
 

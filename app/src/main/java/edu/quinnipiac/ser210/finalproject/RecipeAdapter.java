@@ -7,7 +7,7 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
 
 /*
 RecipeAdapter class. Binds recipe data to cards.
-Author: Jonathan Mason
+Author: Jonathan Mason and Emily Balboni
  */
 package edu.quinnipiac.ser210.finalproject;
 

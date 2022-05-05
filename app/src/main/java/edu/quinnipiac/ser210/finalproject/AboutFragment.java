@@ -8,6 +8,7 @@ By: Jonathan Mason, Emily Balboni, and Amber Kusma
 /*
 About fragment displays information on how the app is run, the inspiration behind the app
 and information about the developers.
+By: Emily Balboni
  */
 package edu.quinnipiac.ser210.finalproject;
 

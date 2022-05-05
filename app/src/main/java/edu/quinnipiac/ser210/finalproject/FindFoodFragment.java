@@ -10,6 +10,7 @@ The find food fragment lets the user search for a food item. When they press ent
 the navigation controller takes the user to the next screen
 We store the food item being searched for in the bundle
  */
+//Author Emily Balboni
 package edu.quinnipiac.ser210.finalproject;
 
 import android.content.Context;
